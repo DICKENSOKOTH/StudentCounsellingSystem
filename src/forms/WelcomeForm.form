@@ -25,32 +25,35 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-        <Component id="background" alignment="0" max="32767" attributes="0"/>
+          <Component id="background" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-        <Component id="background" alignment="0" max="32767" attributes="0"/>
+          <Component id="background" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
     <Container class="utils.AnimatedBackground" name="background">
+
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-            <Component id="topBar" alignment="0" max="32767" attributes="0"/>
-            <Component id="centerPanel" alignment="0" max="32767" attributes="0"/>
-            <Component id="footerPanel" alignment="0" max="32767" attributes="0"/>
+              <Component id="topBar" alignment="0" max="32767" attributes="0"/>
+              <Component id="centerPanel" alignment="0" max="32767" attributes="0"/>
+              <Component id="footerPanel" alignment="0" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-            <Group type="102" alignment="0" attributes="0">
-              <Component id="topBar" min="-2" max="-2" attributes="0"/>
-              <Component id="centerPanel" max="32767" attributes="0"/>
-              <Component id="footerPanel" min="-2" max="-2" attributes="0"/>
-            </Group>
+              <Group type="102" alignment="0" attributes="0">
+                  <Component id="topBar" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                  <Component id="centerPanel" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                  <Component id="footerPanel" min="-2" max="-2" attributes="0"/>
+              </Group>
           </Group>
         </DimensionLayout>
       </Layout>
@@ -59,27 +62,28 @@
           <Properties>
             <Property name="opaque" type="boolean" value="false"/>
           </Properties>
+
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                  <Component id="brandPanel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Component id="rightPanel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                      <Component id="brandPanel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="rightPanel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                  </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="2" attributes="0">
-                    <Component id="brandPanel" alignment="2" min="-2" max="-2" attributes="0"/>
-                    <Component id="rightPanel" alignment="2" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="2" attributes="0">
+                          <Component id="brandPanel" alignment="2" min="-2" max="-2" attributes="0"/>
+                          <Component id="rightPanel" alignment="2" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
-                </Group>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -88,20 +92,21 @@
               <Properties>
                 <Property name="opaque" type="boolean" value="false"/>
               </Properties>
+
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                    <Group type="102" alignment="0" attributes="0">
-                      <Component id="lblLogo" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                      <Component id="namesPanel" min="-2" max="-2" attributes="0"/>
-                    </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="lblLogo" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                          <Component id="namesPanel" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="2" attributes="0">
-                    <Component id="lblLogo" alignment="2" min="-2" max="-2" attributes="0"/>
-                    <Component id="namesPanel" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblLogo" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="namesPanel" alignment="2" min="-2" max="-2" attributes="0"/>
                   </Group>
                 </DimensionLayout>
               </Layout>
@@ -118,20 +123,21 @@
                   <Properties>
                     <Property name="opaque" type="boolean" value="false"/>
                   </Properties>
+
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                        <Component id="lblCentreTitle" alignment="0" min="-2" max="-2" attributes="0"/>
-                        <Component id="lblCentreSub" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblCentreTitle" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblCentreSub" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                        <Group type="102" alignment="0" attributes="0">
-                          <Component id="lblCentreTitle" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                          <Component id="lblCentreSub" min="-2" max="-2" attributes="0"/>
-                        </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="lblCentreTitle" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                              <Component id="lblCentreSub" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                     </DimensionLayout>
                   </Layout>
@@ -160,23 +166,24 @@
               <Properties>
                 <Property name="opaque" type="boolean" value="false"/>
               </Properties>
+
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                    <Group type="102" alignment="0" attributes="0">
-                      <Component id="lblClock" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                      <Component id="btnMinimise" min="-2" pref="32" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                      <Component id="btnClose" min="-2" pref="32" max="-2" attributes="0"/>
-                    </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="lblClock" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                          <Component id="btnMinimise" min="-2" pref="32" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                          <Component id="btnClose" min="-2" pref="32" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="2" attributes="0">
-                    <Component id="lblClock" alignment="2" min="-2" max="-2" attributes="0"/>
-                    <Component id="btnMinimise" alignment="2" min="-2" pref="32" max="-2" attributes="0"/>
-                    <Component id="btnClose" alignment="2" min="-2" pref="32" max="-2" attributes="0"/>
+                      <Component id="lblClock" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnMinimise" alignment="2" min="-2" pref="32" max="-2" attributes="0"/>
+                      <Component id="btnClose" alignment="2" min="-2" pref="32" max="-2" attributes="0"/>
                   </Group>
                 </DimensionLayout>
               </Layout>
@@ -191,13 +198,13 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="btnMinimise">
                   <Properties>
-                    <Property name="borderPainted" type="boolean" value="false"/>
-                    <Property name="contentAreaFilled" type="boolean" value="false"/>
-                    <Property name="focusPainted" type="boolean" value="false"/>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="–"/>
+                    <Property name="text" type="java.lang.String" value="&#x2013;"/>
+                    <Property name="borderPainted" type="boolean" value="false"/>
+                    <Property name="contentAreaFilled" type="boolean" value="false"/>
+                    <Property name="focusPainted" type="boolean" value="false"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMinimiseActionPerformed"/>
@@ -205,13 +212,13 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="btnClose">
                   <Properties>
-                    <Property name="borderPainted" type="boolean" value="false"/>
-                    <Property name="contentAreaFilled" type="boolean" value="false"/>
-                    <Property name="focusPainted" type="boolean" value="false"/>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="×"/>
+                    <Property name="text" type="java.lang.String" value="&#xd7;"/>
+                    <Property name="borderPainted" type="boolean" value="false"/>
+                    <Property name="contentAreaFilled" type="boolean" value="false"/>
+                    <Property name="focusPainted" type="boolean" value="false"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCloseActionPerformed"/>
@@ -225,22 +232,23 @@
           <Properties>
             <Property name="opaque" type="boolean" value="false"/>
           </Properties>
+
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
-                  <Component id="heroPanel" max="32767" attributes="0"/>
-                  <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                  <Component id="roleColumn" min="-2" pref="520" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
-                </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+                      <Component id="heroPanel" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="roleColumn" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+                  </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                <Component id="heroPanel" alignment="0" max="32767" attributes="0"/>
-                <Component id="roleColumn" alignment="0" max="32767" attributes="0"/>
+                  <Component id="heroPanel" alignment="0" max="32767" attributes="0"/>
+                  <Component id="roleColumn" alignment="0" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -249,46 +257,48 @@
               <Properties>
                 <Property name="opaque" type="boolean" value="false"/>
               </Properties>
+
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                    <Component id="lblGreeting" alignment="0" min="-2" max="-2" attributes="0"/>
-                    <Component id="lblTitle1" alignment="0" min="-2" max="-2" attributes="0"/>
-                    <Component id="lblTitle2" alignment="0" min="-2" max="-2" attributes="0"/>
-                    <Component id="lblIntro" alignment="0" min="-2" max="-2" attributes="0"/>
-                    <Group type="102" alignment="0" attributes="0">
-                      <Component id="btnGetStarted" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                      <Component id="btnBook" min="-2" max="-2" attributes="0"/>
-                    </Group>
-                    <Component id="lblFacts" alignment="0" min="-2" max="-2" attributes="0"/>
-                    <Component id="lblAffTitle" alignment="0" min="-2" max="-2" attributes="0"/>
-                    <Component id="lblAffirmation" alignment="0" min="-2" pref="470" max="-2" attributes="0"/>
+                      <Component id="lblGreeting" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblTitle1" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblTitle2" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblIntro" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="btnGetStarted" min="-2" pref="150" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                          <Component id="btnBook" min="-2" pref="170" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="lblFacts" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblAffTitle" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblAffirmation" alignment="0" min="-2" pref="470" max="-2" attributes="0"/>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                    <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="lblGreeting" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                      <Component id="lblTitle1" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblTitle2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                      <Component id="lblIntro" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="2" attributes="0">
-                        <Component id="btnGetStarted" alignment="2" min="-2" max="-2" attributes="0"/>
-                        <Component id="btnBook" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="lblGreeting" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                          <Component id="lblTitle1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                          <Component id="lblTitle2" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                          <Component id="lblIntro" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="2" attributes="0">
+                              <Component id="btnGetStarted" alignment="2" min="-2" pref="46" max="-2" attributes="0"/>
+                              <Component id="btnBook" alignment="2" min="-2" pref="46" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                          <Component id="lblFacts" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                          <Component id="lblAffTitle" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                          <Component id="lblAffirmation" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                      <Component id="lblFacts" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                      <Component id="lblAffTitle" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                      <Component id="lblAffirmation" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                    </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
@@ -325,21 +335,40 @@
                     <Property name="text" type="java.lang.String" value="&lt;html&gt;A safe, confidential space where students can&lt;br&gt;book sessions, share how they feel and connect&lt;br&gt;with caring, professional counsellors.&lt;/html&gt;"/>
                   </Properties>
                 </Component>
-                <Component class="utils.RoundedButton" name="btnGetStarted">
+                <Component class="javax.swing.JButton" name="btnGetStarted">
+                  <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="35" green="b3" red="f5" type="rgb"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="2b" green="16" red="6" type="rgb"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Get Started"/>
+                    <Property name="borderPainted" type="boolean" value="false"/>
+                    <Property name="contentAreaFilled" type="boolean" value="false"/>
+                    <Property name="focusPainted" type="boolean" value="false"/>
+                    <Property name="opaque" type="boolean" value="true"/>
+                  </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGetStartedActionPerformed"/>
                   </Events>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value='new utils.RoundedButton("Get Started", utils.RoundedButton.Style.PRIMARY)'/>
-                  </AuxValues>
                 </Component>
-                <Component class="utils.RoundedButton" name="btnBook">
+                <Component class="javax.swing.JButton" name="btnBook">
+                  <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="84" green="4b" red="1a" type="rgb"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Book a Session"/>
+                    <Property name="borderPainted" type="boolean" value="false"/>
+                    <Property name="contentAreaFilled" type="boolean" value="false"/>
+                    <Property name="focusPainted" type="boolean" value="false"/>
+                  </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBookActionPerformed"/>
                   </Events>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value='new utils.RoundedButton("Book a Session", utils.RoundedButton.Style.GHOST)'/>
-                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblFacts">
                   <Properties>
@@ -371,37 +400,37 @@
               <Properties>
                 <Property name="opaque" type="boolean" value="false"/>
               </Properties>
+
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                    <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                      <Component id="lblContinueAs" min="-2" max="-2" attributes="0"/>
-                    </Group>
-                    <Component id="pnlStudent" alignment="0" max="32767" attributes="0"/>
-                    <Component id="pnlCounsellor" alignment="0" max="32767" attributes="0"/>
-                    <Component id="pnlAdmin" alignment="0" max="32767" attributes="0"/>
-                    <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                      <Component id="lblRegister" min="-2" max="-2" attributes="0"/>
-                    </Group>
+                      <Component id="pnlStudent" alignment="0" max="32767" attributes="0"/>
+                      <Component id="pnlCounsellor" alignment="0" max="32767" attributes="0"/>
+                      <Component id="pnlAdmin" alignment="0" max="32767" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="lblContinueAs" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblRegister" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                    <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="lblContinueAs" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-                      <Component id="pnlStudent" min="-2" pref="108" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                      <Component id="pnlCounsellor" min="-2" pref="108" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                      <Component id="pnlAdmin" min="-2" pref="108" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                      <Component id="lblRegister" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                    </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="lblContinueAs" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                          <Component id="pnlStudent" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                          <Component id="pnlCounsellor" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                          <Component id="pnlAdmin" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                          <Component id="lblRegister" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                      </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
@@ -421,28 +450,29 @@
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new utils.GlassPanel(utils.Theme.TEAL, utils.GlassPanel.Icon.STUDENT)"/>
                   </AuxValues>
+
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                        <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="110" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                            <Component id="pnlStudentTitle" alignment="0" min="-2" max="-2" attributes="0"/>
-                            <Component id="pnlStudentDesc" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="110" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="pnlStudentTitle" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="pnlStudentDesc" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="70" pref="117" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace min="70" pref="70" max="32767" attributes="0"/>
-                        </Group>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                        <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="pnlStudentTitle" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
-                          <Component id="pnlStudentDesc" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                        </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace pref="24" max="32767" attributes="0"/>
+                              <Component id="pnlStudentTitle" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+                              <Component id="pnlStudentDesc" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="24" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                     </DimensionLayout>
                   </Layout>
@@ -472,28 +502,29 @@
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new utils.GlassPanel(utils.Theme.GOLD, utils.GlassPanel.Icon.COUNSELLOR)"/>
                   </AuxValues>
+
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                        <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="110" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                            <Component id="pnlCounsellorTitle" alignment="0" min="-2" max="-2" attributes="0"/>
-                            <Component id="pnlCounsellorDesc" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="110" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="pnlCounsellorTitle" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="pnlCounsellorDesc" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="70" pref="70" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace min="70" pref="70" max="32767" attributes="0"/>
-                        </Group>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                        <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="pnlCounsellorTitle" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
-                          <Component id="pnlCounsellorDesc" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                        </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace pref="24" max="32767" attributes="0"/>
+                              <Component id="pnlCounsellorTitle" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+                              <Component id="pnlCounsellorDesc" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="24" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                     </DimensionLayout>
                   </Layout>
@@ -523,28 +554,29 @@
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new utils.GlassPanel(utils.Theme.LAVENDER, utils.GlassPanel.Icon.ADMIN)"/>
                   </AuxValues>
+
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                        <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="110" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                            <Component id="pnlAdminTitle" alignment="0" min="-2" max="-2" attributes="0"/>
-                            <Component id="pnlAdminDesc" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="110" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="pnlAdminTitle" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="pnlAdminDesc" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="70" pref="70" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace min="70" pref="70" max="32767" attributes="0"/>
-                        </Group>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                        <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="pnlAdminTitle" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
-                          <Component id="pnlAdminDesc" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                        </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace pref="24" max="32767" attributes="0"/>
+                              <Component id="pnlAdminTitle" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+                              <Component id="pnlAdminDesc" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="24" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                     </DimensionLayout>
                   </Layout>
@@ -586,27 +618,28 @@
           <Properties>
             <Property name="opaque" type="boolean" value="false"/>
           </Properties>
+
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                  <Component id="lblCopyright" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Component id="lblContact" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                      <Component id="lblCopyright" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="lblContact" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                  </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                <Group type="102" alignment="0" attributes="0">
-                  <Group type="103" groupAlignment="2" attributes="0">
-                    <Component id="lblCopyright" alignment="2" min="-2" max="-2" attributes="0"/>
-                    <Component id="lblContact" alignment="2" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="2" attributes="0">
+                          <Component id="lblCopyright" alignment="2" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblContact" alignment="2" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                </Group>
               </Group>
             </DimensionLayout>
           </Layout>

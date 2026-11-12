@@ -64,6 +64,8 @@ public class WelcomeForm extends javax.swing.JFrame {
         lblClock.setFont(Theme.font(Font.PLAIN, 13f));
         lblCopyright.setFont(Theme.font(Font.PLAIN, 12f));
         lblContact.setFont(Theme.font(Font.PLAIN, 12f));
+        btnGetStarted.setFont(Theme.font(Font.BOLD, 15f));
+        btnBook.setFont(Theme.font(Font.BOLD, 15f));
         btnMinimise.setFont(Theme.font(Font.BOLD, 22f));
         btnClose.setFont(Theme.font(Font.BOLD, 22f));
         for (javax.swing.JLabel l : new javax.swing.JLabel[]{pnlStudentTitle, pnlCounsellorTitle, pnlAdminTitle}) {
@@ -78,7 +80,7 @@ public class WelcomeForm extends javax.swing.JFrame {
         btnClose.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
         // hand cursor on clickable items
-        for (java.awt.Component c : new java.awt.Component[]{btnMinimise, btnClose, lblRegister}) {
+        for (java.awt.Component c : new java.awt.Component[]{btnGetStarted, btnBook, btnMinimise, btnClose, lblRegister}) {
             c.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         }
 
@@ -208,8 +210,8 @@ public class WelcomeForm extends javax.swing.JFrame {
         lblTitle1 = new javax.swing.JLabel();
         lblTitle2 = new javax.swing.JLabel();
         lblIntro = new javax.swing.JLabel();
-        btnGetStarted = new utils.RoundedButton("Get Started", utils.RoundedButton.Style.PRIMARY);
-        btnBook = new utils.RoundedButton("Book a Session", utils.RoundedButton.Style.GHOST);
+        btnGetStarted = new javax.swing.JButton();
+        btnBook = new javax.swing.JButton();
         lblFacts = new javax.swing.JLabel();
         lblAffTitle = new javax.swing.JLabel();
         lblAffirmation = new javax.swing.JLabel();
@@ -233,8 +235,14 @@ public class WelcomeForm extends javax.swing.JFrame {
         setTitle("USIU-Africa | Student Counselling System");
         setUndecorated(true);
 
+        topBar.setOpaque(false);
+
+        brandPanel.setOpaque(false);
+
         lblLogo.setForeground(new java.awt.Color(255, 255, 255));
         lblLogo.setText("USIU-Africa");
+
+        namesPanel.setOpaque(false);
 
         lblCentreTitle.setForeground(new java.awt.Color(255, 255, 255));
         lblCentreTitle.setText("Student Counselling Centre");
@@ -242,39 +250,37 @@ public class WelcomeForm extends javax.swing.JFrame {
         lblCentreSub.setForeground(new java.awt.Color(180, 195, 216));
         lblCentreSub.setText("FREIDA BROWN STUDENT CENTER  |  2ND FLOOR");
 
-        namesPanel.setOpaque(false);
-
         javax.swing.GroupLayout namesPanelLayout = new javax.swing.GroupLayout(namesPanel);
         namesPanel.setLayout(namesPanelLayout);
         namesPanelLayout.setHorizontalGroup(
             namesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblCentreTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(lblCentreSub, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(lblCentreTitle)
+            .addComponent(lblCentreSub)
         );
         namesPanelLayout.setVerticalGroup(
             namesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(namesPanelLayout.createSequentialGroup()
-                .addComponent(lblCentreTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblCentreTitle)
                 .addGap(2, 2, 2)
-                .addComponent(lblCentreSub, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(lblCentreSub))
         );
-
-        brandPanel.setOpaque(false);
 
         javax.swing.GroupLayout brandPanelLayout = new javax.swing.GroupLayout(brandPanel);
         brandPanel.setLayout(brandPanelLayout);
         brandPanelLayout.setHorizontalGroup(
             brandPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(brandPanelLayout.createSequentialGroup()
-                .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblLogo)
                 .addGap(16, 16, 16)
                 .addComponent(namesPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         brandPanelLayout.setVerticalGroup(
             brandPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-            .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(lblLogo)
             .addComponent(namesPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
+
+        rightPanel.setOpaque(false);
 
         lblClock.setForeground(new java.awt.Color(180, 195, 216));
         lblClock.setText("Wed, 11 Nov 2026   10:00:00");
@@ -284,23 +290,29 @@ public class WelcomeForm extends javax.swing.JFrame {
         btnMinimise.setFocusPainted(false);
         btnMinimise.setForeground(new java.awt.Color(255, 255, 255));
         btnMinimise.setText("–");
-        btnMinimise.addActionListener(this::btnMinimiseActionPerformed);
+        btnMinimise.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMinimiseActionPerformed(evt);
+            }
+        });
 
         btnClose.setBorderPainted(false);
         btnClose.setContentAreaFilled(false);
         btnClose.setFocusPainted(false);
         btnClose.setForeground(new java.awt.Color(255, 255, 255));
         btnClose.setText("×");
-        btnClose.addActionListener(this::btnCloseActionPerformed);
-
-        rightPanel.setOpaque(false);
+        btnClose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCloseActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout rightPanelLayout = new javax.swing.GroupLayout(rightPanel);
         rightPanel.setLayout(rightPanelLayout);
         rightPanelLayout.setHorizontalGroup(
             rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(rightPanelLayout.createSequentialGroup()
-                .addComponent(lblClock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblClock)
                 .addGap(18, 18, 18)
                 .addComponent(btnMinimise, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(6, 6, 6)
@@ -308,12 +320,10 @@ public class WelcomeForm extends javax.swing.JFrame {
         );
         rightPanelLayout.setVerticalGroup(
             rightPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-            .addComponent(lblClock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(lblClock)
             .addComponent(btnMinimise, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addComponent(btnClose, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
-
-        topBar.setOpaque(false);
 
         javax.swing.GroupLayout topBarLayout = new javax.swing.GroupLayout(topBar);
         topBar.setLayout(topBarLayout);
@@ -322,7 +332,7 @@ public class WelcomeForm extends javax.swing.JFrame {
             .addGroup(topBarLayout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addComponent(brandPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(rightPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28))
         );
@@ -334,6 +344,10 @@ public class WelcomeForm extends javax.swing.JFrame {
                     .addComponent(brandPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(rightPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
+
+        centerPanel.setOpaque(false);
+
+        heroPanel.setOpaque(false);
 
         lblGreeting.setForeground(new java.awt.Color(46, 196, 182));
         lblGreeting.setText("Welcome  |  your wellbeing matters");
@@ -347,9 +361,30 @@ public class WelcomeForm extends javax.swing.JFrame {
         lblIntro.setForeground(new java.awt.Color(180, 195, 216));
         lblIntro.setText("<html>A safe, confidential space where students can<br>book sessions, share how they feel and connect<br>with caring, professional counsellors.</html>");
 
-        btnGetStarted.addActionListener(this::btnGetStartedActionPerformed);
+        btnGetStarted.setBackground(new java.awt.Color(245, 179, 53));
+        btnGetStarted.setBorderPainted(false);
+        btnGetStarted.setContentAreaFilled(false);
+        btnGetStarted.setFocusPainted(false);
+        btnGetStarted.setForeground(new java.awt.Color(6, 22, 43));
+        btnGetStarted.setOpaque(true);
+        btnGetStarted.setText("Get Started");
+        btnGetStarted.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGetStartedActionPerformed(evt);
+            }
+        });
 
-        btnBook.addActionListener(this::btnBookActionPerformed);
+        btnBook.setBackground(new java.awt.Color(26, 75, 132));
+        btnBook.setForeground(new java.awt.Color(255, 255, 255));
+        btnBook.setText("Book a Session");
+        btnBook.setBorderPainted(false);
+        btnBook.setContentAreaFilled(false);
+        btnBook.setFocusPainted(false);
+        btnBook.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBookActionPerformed(evt);
+            }
+        });
 
         lblFacts.setForeground(new java.awt.Color(255, 215, 122));
         lblFacts.setText("Confidential  |  Free of charge  |  Mon - Fri, 8am - 5pm");
@@ -360,61 +395,62 @@ public class WelcomeForm extends javax.swing.JFrame {
         lblAffirmation.setForeground(new java.awt.Color(180, 195, 216));
         lblAffirmation.setText("It is okay to ask for help. That is a sign of strength.");
 
-        heroPanel.setOpaque(false);
-
         javax.swing.GroupLayout heroPanelLayout = new javax.swing.GroupLayout(heroPanel);
         heroPanel.setLayout(heroPanelLayout);
         heroPanelLayout.setHorizontalGroup(
             heroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblGreeting, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(lblTitle1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(lblTitle2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(lblGreeting)
+            .addComponent(lblTitle1)
+            .addComponent(lblTitle2)
             .addComponent(lblIntro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(heroPanelLayout.createSequentialGroup()
-                .addComponent(btnGetStarted, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnGetStarted, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(14, 14, 14)
-                .addComponent(btnBook, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(lblFacts, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(lblAffTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnBook, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(lblFacts)
+            .addComponent(lblAffTitle)
             .addComponent(lblAffirmation, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         heroPanelLayout.setVerticalGroup(
             heroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(heroPanelLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(lblGreeting, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblGreeting)
                 .addGap(18, 18, 18)
-                .addComponent(lblTitle1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(lblTitle2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblTitle1)
+                .addGap(0, 0, 0)
+                .addComponent(lblTitle2)
                 .addGap(14, 14, 14)
                 .addComponent(lblIntro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addGroup(heroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(btnGetStarted, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBook, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnGetStarted, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBook, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
-                .addComponent(lblFacts, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblFacts)
                 .addGap(26, 26, 26)
-                .addComponent(lblAffTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblAffTitle)
                 .addGap(6, 6, 6)
-                .addComponent(lblAffirmation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(lblAffirmation)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        roleColumn.setOpaque(false);
 
         lblContinueAs.setForeground(new java.awt.Color(245, 179, 53));
         lblContinueAs.setText("CONTINUE AS");
-
-        pnlStudentTitle.setForeground(new java.awt.Color(255, 255, 255));
-        pnlStudentTitle.setText("Student");
-
-        pnlStudentDesc.setForeground(new java.awt.Color(180, 195, 216));
-        pnlStudentDesc.setText("<html>Book appointments, track your mood and<br>access wellbeing resources.</html>");
 
         pnlStudent.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pnlStudentMouseClicked(evt);
             }
         });
+
+        pnlStudentTitle.setForeground(new java.awt.Color(255, 255, 255));
+        pnlStudentTitle.setText("Student");
+
+        pnlStudentDesc.setForeground(new java.awt.Color(180, 195, 216));
+        pnlStudentDesc.setText("<html>Book appointments, track your mood and<br>access wellbeing resources.</html>");
 
         javax.swing.GroupLayout pnlStudentLayout = new javax.swing.GroupLayout(pnlStudent);
         pnlStudent.setLayout(pnlStudentLayout);
@@ -423,31 +459,31 @@ public class WelcomeForm extends javax.swing.JFrame {
             .addGroup(pnlStudentLayout.createSequentialGroup()
                 .addGap(110, 110, 110)
                 .addGroup(pnlStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnlStudentTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pnlStudentTitle)
                     .addComponent(pnlStudentDesc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(70, 70, Short.MAX_VALUE))
+                .addGap(70, 117, Short.MAX_VALUE))
         );
         pnlStudentLayout.setVerticalGroup(
             pnlStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlStudentLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(pnlStudentTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(24, Short.MAX_VALUE)
+                .addComponent(pnlStudentTitle)
                 .addGap(3, 3, 3)
                 .addComponent(pnlStudentDesc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
-
-        pnlCounsellorTitle.setForeground(new java.awt.Color(255, 255, 255));
-        pnlCounsellorTitle.setText("Counsellor");
-
-        pnlCounsellorDesc.setForeground(new java.awt.Color(180, 195, 216));
-        pnlCounsellorDesc.setText("<html>Manage your schedule, sessions and<br>confidential student notes.</html>");
 
         pnlCounsellor.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pnlCounsellorMouseClicked(evt);
             }
         });
+
+        pnlCounsellorTitle.setForeground(new java.awt.Color(255, 255, 255));
+        pnlCounsellorTitle.setText("Counsellor");
+
+        pnlCounsellorDesc.setForeground(new java.awt.Color(180, 195, 216));
+        pnlCounsellorDesc.setText("<html>Manage your schedule, sessions and<br>confidential student notes.</html>");
 
         javax.swing.GroupLayout pnlCounsellorLayout = new javax.swing.GroupLayout(pnlCounsellor);
         pnlCounsellor.setLayout(pnlCounsellorLayout);
@@ -456,31 +492,31 @@ public class WelcomeForm extends javax.swing.JFrame {
             .addGroup(pnlCounsellorLayout.createSequentialGroup()
                 .addGap(110, 110, 110)
                 .addGroup(pnlCounsellorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnlCounsellorTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pnlCounsellorTitle)
                     .addComponent(pnlCounsellorDesc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(70, 70, Short.MAX_VALUE))
         );
         pnlCounsellorLayout.setVerticalGroup(
             pnlCounsellorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlCounsellorLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(pnlCounsellorTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(24, Short.MAX_VALUE)
+                .addComponent(pnlCounsellorTitle)
                 .addGap(3, 3, 3)
                 .addComponent(pnlCounsellorDesc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
-
-        pnlAdminTitle.setForeground(new java.awt.Color(255, 255, 255));
-        pnlAdminTitle.setText("Administrator");
-
-        pnlAdminDesc.setForeground(new java.awt.Color(180, 195, 216));
-        pnlAdminDesc.setText("<html>Manage users, view reports and<br>configure the system.</html>");
 
         pnlAdmin.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pnlAdminMouseClicked(evt);
             }
         });
+
+        pnlAdminTitle.setForeground(new java.awt.Color(255, 255, 255));
+        pnlAdminTitle.setText("Administrator");
+
+        pnlAdminDesc.setForeground(new java.awt.Color(180, 195, 216));
+        pnlAdminDesc.setText("<html>Manage users, view reports and<br>configure the system.</html>");
 
         javax.swing.GroupLayout pnlAdminLayout = new javax.swing.GroupLayout(pnlAdmin);
         pnlAdmin.setLayout(pnlAdminLayout);
@@ -489,18 +525,18 @@ public class WelcomeForm extends javax.swing.JFrame {
             .addGroup(pnlAdminLayout.createSequentialGroup()
                 .addGap(110, 110, 110)
                 .addGroup(pnlAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnlAdminTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pnlAdminTitle)
                     .addComponent(pnlAdminDesc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(70, 70, Short.MAX_VALUE))
         );
         pnlAdminLayout.setVerticalGroup(
             pnlAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlAdminLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(pnlAdminTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(24, Short.MAX_VALUE)
+                .addComponent(pnlAdminTitle)
                 .addGap(3, 3, 3)
                 .addComponent(pnlAdminDesc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         lblRegister.setForeground(new java.awt.Color(255, 215, 122));
@@ -511,39 +547,34 @@ public class WelcomeForm extends javax.swing.JFrame {
             }
         });
 
-        roleColumn.setOpaque(false);
-
         javax.swing.GroupLayout roleColumnLayout = new javax.swing.GroupLayout(roleColumn);
         roleColumn.setLayout(roleColumnLayout);
         roleColumnLayout.setHorizontalGroup(
             roleColumnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(roleColumnLayout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(lblContinueAs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addComponent(pnlStudent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(pnlCounsellor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(pnlAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(roleColumnLayout.createSequentialGroup()
                 .addGap(6, 6, 6)
-                .addComponent(lblRegister, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(roleColumnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblContinueAs)
+                    .addComponent(lblRegister)))
         );
         roleColumnLayout.setVerticalGroup(
             roleColumnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(roleColumnLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(lblContinueAs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblContinueAs)
                 .addGap(8, 8, 8)
-                .addComponent(pnlStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnlStudent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(2, 2, 2)
-                .addComponent(pnlCounsellor, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnlCounsellor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(2, 2, 2)
-                .addComponent(pnlAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnlAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
-                .addComponent(lblRegister, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(lblRegister)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        centerPanel.setOpaque(false);
 
         javax.swing.GroupLayout centerPanelLayout = new javax.swing.GroupLayout(centerPanel);
         centerPanel.setLayout(centerPanelLayout);
@@ -553,7 +584,7 @@ public class WelcomeForm extends javax.swing.JFrame {
                 .addGap(56, 56, 56)
                 .addComponent(heroPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(40, 40, 40)
-                .addComponent(roleColumn, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(roleColumn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(56, 56, 56))
         );
         centerPanelLayout.setVerticalGroup(
@@ -562,13 +593,13 @@ public class WelcomeForm extends javax.swing.JFrame {
             .addComponent(roleColumn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        footerPanel.setOpaque(false);
+
         lblCopyright.setForeground(new java.awt.Color(180, 195, 216));
         lblCopyright.setText("(c) 2026 USIU-Africa  |  Student Counselling System  |  OOAD Project");
 
         lblContact.setForeground(new java.awt.Color(180, 195, 216));
         lblContact.setText("counsel@usiu.ac.ke   |   Esc to exit");
-
-        footerPanel.setOpaque(false);
 
         javax.swing.GroupLayout footerPanelLayout = new javax.swing.GroupLayout(footerPanel);
         footerPanel.setLayout(footerPanelLayout);
@@ -576,20 +607,19 @@ public class WelcomeForm extends javax.swing.JFrame {
             footerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(footerPanelLayout.createSequentialGroup()
                 .addGap(36, 36, 36)
-                .addComponent(lblCopyright, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(lblContact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblCopyright)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblContact)
                 .addGap(36, 36, 36))
         );
         footerPanelLayout.setVerticalGroup(
             footerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(footerPanelLayout.createSequentialGroup()
                 .addGroup(footerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(lblCopyright, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblContact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblCopyright)
+                    .addComponent(lblContact))
                 .addGap(16, 16, 16))
         );
-
 
         javax.swing.GroupLayout backgroundLayout = new javax.swing.GroupLayout(background);
         background.setLayout(backgroundLayout);
@@ -603,7 +633,9 @@ public class WelcomeForm extends javax.swing.JFrame {
             backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(backgroundLayout.createSequentialGroup()
                 .addComponent(topBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
                 .addComponent(centerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, 0)
                 .addComponent(footerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -619,7 +651,6 @@ public class WelcomeForm extends javax.swing.JFrame {
         );
 
         pack();
-
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGetStartedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGetStartedActionPerformed
@@ -682,9 +713,9 @@ public class WelcomeForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private utils.AnimatedBackground background;
     private javax.swing.JPanel brandPanel;
-    private utils.RoundedButton btnBook;
+    private javax.swing.JButton btnBook;
     private javax.swing.JButton btnClose;
-    private utils.RoundedButton btnGetStarted;
+    private javax.swing.JButton btnGetStarted;
     private javax.swing.JButton btnMinimise;
     private javax.swing.JPanel centerPanel;
     private javax.swing.JPanel footerPanel;
