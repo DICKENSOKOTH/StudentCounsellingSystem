@@ -7,7 +7,8 @@
  * Created: Nov 8, 2026
  */
 
-CREATE DATABASE student_counselling_db;
+
+CREATE DATABASE IF NOT EXISTS student_counselling_db;
 
 USE student_counselling_db;
 
@@ -17,7 +18,6 @@ CREATE TABLE students (
     registration_number VARCHAR(50) NOT NULL UNIQUE,
     email VARCHAR(100) NOT NULL UNIQUE,
     phone VARCHAR(20),
-    password_hash VARCHAR(255) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -26,8 +26,7 @@ CREATE TABLE counsellors (
     full_name VARCHAR(100) NOT NULL,
     email VARCHAR(100) NOT NULL UNIQUE,
     phone VARCHAR(20),
-    specialization VARCHAR(100),
-    password_hash VARCHAR(255) NOT NULL
+    specialization VARCHAR(100)
 );
 
 CREATE TABLE users (
@@ -38,9 +37,11 @@ CREATE TABLE users (
     student_id INT UNIQUE,
     counsellor_id INT UNIQUE,
     FOREIGN KEY (student_id)
-        REFERENCES students(student_id),
+        REFERENCES students(student_id)
+        ON DELETE CASCADE,
     FOREIGN KEY (counsellor_id)
         REFERENCES counsellors(counsellor_id)
+        ON DELETE CASCADE
 );
 
 CREATE TABLE appointments (
@@ -55,7 +56,8 @@ CREATE TABLE appointments (
         'APPROVED',
         'COMPLETED',
         'CANCELLED'
-    ) DEFAULT 'PENDING',
+    ) NOT NULL DEFAULT 'PENDING',
+    UNIQUE (counsellor_id, appointment_date, appointment_time),
     FOREIGN KEY (student_id)
         REFERENCES students(student_id),
     FOREIGN KEY (counsellor_id)
@@ -69,13 +71,14 @@ CREATE TABLE counselling_sessions (
     session_date DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (appointment_id)
         REFERENCES appointments(appointment_id)
+        ON DELETE CASCADE
 );
 
 CREATE TABLE feedback (
     feedback_id INT AUTO_INCREMENT PRIMARY KEY,
     student_id INT NOT NULL,
-    appointment_id INT NOT NULL,
-    rating INT NOT NULL,
+    appointment_id INT NOT NULL UNIQUE,
+    rating INT NOT NULL CHECK (rating BETWEEN 1 AND 5),
     comments TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 
@@ -84,4 +87,5 @@ CREATE TABLE feedback (
 
     FOREIGN KEY (appointment_id)
         REFERENCES appointments(appointment_id)
+        ON DELETE CASCADE
 );
