@@ -75,9 +75,11 @@ public class WelcomeForm extends javax.swing.JFrame {
             l.setFont(Theme.font(Font.PLAIN, 13f));
         }
 
-        // no padding so the round window buttons show their symbol
-        btnMinimise.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        btnClose.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        // Nimbus pads buttons heavily, which turns small symbols into "..."; remove that padding
+        for (javax.swing.JButton b : new javax.swing.JButton[]{btnMinimise, btnClose}) {
+            b.setBorder(javax.swing.BorderFactory.createEmptyBorder());
+            b.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        }
 
         // hand cursor on clickable items
         for (java.awt.Component c : new java.awt.Component[]{btnGetStarted, btnBook, btnMinimise, btnClose, lblRegister}) {
@@ -285,22 +287,22 @@ public class WelcomeForm extends javax.swing.JFrame {
         lblClock.setForeground(new java.awt.Color(180, 195, 216));
         lblClock.setText("Wed, 11 Nov 2026   10:00:00");
 
+        btnMinimise.setForeground(new java.awt.Color(255, 255, 255));
+        btnMinimise.setText("–");
         btnMinimise.setBorderPainted(false);
         btnMinimise.setContentAreaFilled(false);
         btnMinimise.setFocusPainted(false);
-        btnMinimise.setForeground(new java.awt.Color(255, 255, 255));
-        btnMinimise.setText("–");
         btnMinimise.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMinimiseActionPerformed(evt);
             }
         });
 
+        btnClose.setForeground(new java.awt.Color(255, 255, 255));
+        btnClose.setText("×");
         btnClose.setBorderPainted(false);
         btnClose.setContentAreaFilled(false);
         btnClose.setFocusPainted(false);
-        btnClose.setForeground(new java.awt.Color(255, 255, 255));
-        btnClose.setText("×");
         btnClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCloseActionPerformed(evt);
@@ -362,12 +364,12 @@ public class WelcomeForm extends javax.swing.JFrame {
         lblIntro.setText("<html>A safe, confidential space where students can<br>book sessions, share how they feel and connect<br>with caring, professional counsellors.</html>");
 
         btnGetStarted.setBackground(new java.awt.Color(245, 179, 53));
+        btnGetStarted.setForeground(new java.awt.Color(6, 22, 43));
+        btnGetStarted.setText("Get Started");
         btnGetStarted.setBorderPainted(false);
         btnGetStarted.setContentAreaFilled(false);
         btnGetStarted.setFocusPainted(false);
-        btnGetStarted.setForeground(new java.awt.Color(6, 22, 43));
         btnGetStarted.setOpaque(true);
-        btnGetStarted.setText("Get Started");
         btnGetStarted.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGetStartedActionPerformed(evt);
@@ -399,17 +401,20 @@ public class WelcomeForm extends javax.swing.JFrame {
         heroPanel.setLayout(heroPanelLayout);
         heroPanelLayout.setHorizontalGroup(
             heroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblGreeting)
-            .addComponent(lblTitle1)
-            .addComponent(lblTitle2)
-            .addComponent(lblIntro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(heroPanelLayout.createSequentialGroup()
-                .addComponent(btnGetStarted, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(14, 14, 14)
-                .addComponent(btnBook, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(lblFacts)
-            .addComponent(lblAffTitle)
-            .addComponent(lblAffirmation, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(heroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblGreeting)
+                    .addComponent(lblTitle1)
+                    .addComponent(lblTitle2)
+                    .addComponent(lblIntro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(heroPanelLayout.createSequentialGroup()
+                        .addComponent(btnGetStarted)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnBook, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblFacts)
+                    .addComponent(lblAffTitle)
+                    .addComponent(lblAffirmation, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(86, 86, 86))
         );
         heroPanelLayout.setVerticalGroup(
             heroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -461,16 +466,16 @@ public class WelcomeForm extends javax.swing.JFrame {
                 .addGroup(pnlStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(pnlStudentTitle)
                     .addComponent(pnlStudentDesc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(70, 117, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlStudentLayout.setVerticalGroup(
             pnlStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlStudentLayout.createSequentialGroup()
-                .addContainerGap(24, Short.MAX_VALUE)
+                .addContainerGap(11, Short.MAX_VALUE)
                 .addComponent(pnlStudentTitle)
                 .addGap(3, 3, 3)
                 .addComponent(pnlStudentDesc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         pnlCounsellor.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -494,16 +499,16 @@ public class WelcomeForm extends javax.swing.JFrame {
                 .addGroup(pnlCounsellorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(pnlCounsellorTitle)
                     .addComponent(pnlCounsellorDesc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(70, 70, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlCounsellorLayout.setVerticalGroup(
             pnlCounsellorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlCounsellorLayout.createSequentialGroup()
-                .addContainerGap(24, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(pnlCounsellorTitle)
                 .addGap(3, 3, 3)
                 .addComponent(pnlCounsellorDesc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pnlAdmin.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -527,16 +532,16 @@ public class WelcomeForm extends javax.swing.JFrame {
                 .addGroup(pnlAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(pnlAdminTitle)
                     .addComponent(pnlAdminDesc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(70, 70, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlAdminLayout.setVerticalGroup(
             pnlAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlAdminLayout.createSequentialGroup()
-                .addContainerGap(24, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(pnlAdminTitle)
                 .addGap(3, 3, 3)
                 .addComponent(pnlAdminDesc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         lblRegister.setForeground(new java.awt.Color(255, 215, 122));
@@ -551,14 +556,15 @@ public class WelcomeForm extends javax.swing.JFrame {
         roleColumn.setLayout(roleColumnLayout);
         roleColumnLayout.setHorizontalGroup(
             roleColumnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlStudent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(pnlCounsellor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(pnlAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(roleColumnLayout.createSequentialGroup()
                 .addGap(6, 6, 6)
                 .addGroup(roleColumnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblContinueAs)
-                    .addComponent(lblRegister)))
+                    .addComponent(lblRegister))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(pnlStudent, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         roleColumnLayout.setVerticalGroup(
             roleColumnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -567,11 +573,11 @@ public class WelcomeForm extends javax.swing.JFrame {
                 .addComponent(lblContinueAs)
                 .addGap(8, 8, 8)
                 .addComponent(pnlStudent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(2, 2, 2)
-                .addComponent(pnlCounsellor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnlCounsellor, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(2, 2, 2)
                 .addComponent(pnlAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblRegister)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -584,7 +590,7 @@ public class WelcomeForm extends javax.swing.JFrame {
                 .addGap(56, 56, 56)
                 .addComponent(heroPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(40, 40, 40)
-                .addComponent(roleColumn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(roleColumn, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(56, 56, 56))
         );
         centerPanelLayout.setVerticalGroup(
