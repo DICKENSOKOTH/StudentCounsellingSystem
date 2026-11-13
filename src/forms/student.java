@@ -65,6 +65,7 @@ public class student extends javax.swing.JPanel {
         titlelabel.setToolTipText("");
 
         studentdashboard.setText("Dashboard");
+        studentdashboard.addActionListener(this::studentdashboardActionPerformed);
 
         bookappointment.setText("Book Appointment");
 
@@ -314,6 +315,10 @@ public class student extends javax.swing.JPanel {
     private void myappointmentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myappointmentsActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_myappointmentsActionPerformed
+
+    private void studentdashboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentdashboardActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_studentdashboardActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
