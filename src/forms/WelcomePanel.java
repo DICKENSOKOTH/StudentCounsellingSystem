@@ -1,31 +1,21 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package forms;
 
-import java.awt.Cursor;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.Toolkit;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.geom.RoundRectangle2D;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import javax.swing.Timer;
-import utils.Theme;
+import studentcounsellingsystem.MainFrame;
 
 /**
- * Welcome / landing page of the USIU-Africa Student Counselling System.
- * Undecorated (no title bar), rounded and draggable. Layout lives in the Design tab.
+ * Welcome page (1100 x 700). The whole layout lives in the Design tab;
+ * the only hand-written code is the clock, the affirmations and goTo().
  *
  * @author Student Counselling System team
  */
-public class WelcomeForm extends javax.swing.JFrame {
-
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(WelcomeForm.class.getName());
+public class WelcomePanel extends javax.swing.JPanel {
 
     private static final String[] AFFIRMATIONS = {
         "It is okay to ask for help. That is a sign of strength.",
@@ -34,156 +24,37 @@ public class WelcomeForm extends javax.swing.JFrame {
         "You are not alone on this journey.",
         "Every conversation with a counsellor is confidential."
     };
-
-    private java.awt.Point dragOffset;
     private int affirmationIndex;
 
     /**
-     * Creates new form WelcomeForm
+     * Creates new form WelcomePanel
      */
-    public WelcomeForm() {
+    public WelcomePanel() {
         initComponents();
-        applyTheme();
-        setupWindow();
+        startTimers();
     }
 
-    /** Fonts, logo and small touches the property sheet can't express. */
-    private void applyTheme() {
-        // fonts (Theme picks the best installed family)
-        lblGreeting.setFont(Theme.font(Font.BOLD, 14f));
-        lblTitle1.setFont(Theme.font(Font.BOLD, 42f));
-        lblTitle2.setFont(Theme.font(Font.BOLD, 42f));
-        lblIntro.setFont(Theme.font(Font.PLAIN, 16f));
-        lblFacts.setFont(Theme.font(Font.PLAIN, 14f));
-        lblAffTitle.setFont(Theme.tracked(Theme.font(Font.BOLD, 10.5f), 0.2f));
-        lblAffirmation.setFont(Theme.font(Font.ITALIC, 15f));
-        lblContinueAs.setFont(Theme.tracked(Theme.font(Font.BOLD, 12f), 0.2f));
-        lblRegister.setFont(Theme.font(Font.PLAIN, 13f));
-        lblCentreTitle.setFont(Theme.font(Font.BOLD, 20f));
-        lblCentreSub.setFont(Theme.tracked(Theme.font(Font.PLAIN, 11f), 0.14f));
-        lblClock.setFont(Theme.font(Font.PLAIN, 13f));
-        lblCopyright.setFont(Theme.font(Font.PLAIN, 12f));
-        lblContact.setFont(Theme.font(Font.PLAIN, 12f));
-        btnGetStarted.setFont(Theme.font(Font.BOLD, 15f));
-        btnBook.setFont(Theme.font(Font.BOLD, 15f));
-        btnMinimise.setFont(Theme.font(Font.BOLD, 22f));
-        btnClose.setFont(Theme.font(Font.BOLD, 22f));
-        for (javax.swing.JLabel l : new javax.swing.JLabel[]{pnlStudentTitle, pnlCounsellorTitle, pnlAdminTitle}) {
-            l.setFont(Theme.font(Font.BOLD, 19f));
-        }
-        for (javax.swing.JLabel l : new javax.swing.JLabel[]{pnlStudentDesc, pnlCounsellorDesc, pnlAdminDesc}) {
-            l.setFont(Theme.font(Font.PLAIN, 13f));
-        }
-
-        // Nimbus pads buttons heavily, which turns small symbols into "..."; remove that padding
-        for (javax.swing.JButton b : new javax.swing.JButton[]{btnMinimise, btnClose}) {
-            b.setBorder(javax.swing.BorderFactory.createEmptyBorder());
-            b.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        }
-
-        // hand cursor on clickable items
-        for (java.awt.Component c : new java.awt.Component[]{btnGetStarted, btnBook, btnMinimise, btnClose, lblRegister}) {
-            c.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        }
-
-        // dynamic text
-        lblGreeting.setText(greeting() + "  |  your wellbeing matters");
-        lblCopyright.setText("\u00A9 " + Calendar.getInstance().get(Calendar.YEAR)
-                + " USIU-Africa  |  Student Counselling System  |  OOAD Project");
-
-        // bundled USIU-Africa logo
-        javax.swing.ImageIcon logo = loadLogo(64);
-        if (logo != null) {
-            lblLogo.setText(null);
-            lblLogo.setIcon(logo);
-        }
-    }
-
-    /** Window behaviour: size, rounded corners, drag, clock, rotating affirmations, Esc, fade-in. */
-    private void setupWindow() {
-        Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
-        setSize(Math.min(1200, screen.width - 40), Math.min(720, screen.height - 60));
-        setLocationRelativeTo(null);
-
-        // rounded corners
-        addComponentListener(new java.awt.event.ComponentAdapter() {
-            @Override public void componentResized(java.awt.event.ComponentEvent e) {
-                try { setShape(new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 30, 30)); }
-                catch (UnsupportedOperationException ignored) { /* platform has no shaped windows */ }
-            }
-        });
-
-        // drag the undecorated window from the background
-        MouseAdapter drag = new MouseAdapter() {
-            @Override public void mousePressed(MouseEvent e) { dragOffset = e.getPoint(); }
-            @Override public void mouseDragged(MouseEvent e) {
-                if (dragOffset != null) { setLocation(e.getXOnScreen() - dragOffset.x, e.getYOnScreen() - dragOffset.y); }
-            }
-        };
-        background.addMouseListener(drag);
-        background.addMouseMotionListener(drag);
-
-        // live clock
-        SimpleDateFormat fmt = new SimpleDateFormat("EEE, dd MMM yyyy   HH:mm:ss");
+    /** Live clock and rotating affirmation (not possible in the Design tab). */
+    private void startTimers() {
+        SimpleDateFormat fmt = new SimpleDateFormat("EEEE, dd MMM yyyy   HH:mm:ss");
         lblClock.setText(fmt.format(new Date()));
         new Timer(1000, e -> lblClock.setText(fmt.format(new Date()))).start();
 
-        // rotating affirmation
         lblAffirmation.setText(AFFIRMATIONS[0]);
         new Timer(5000, e -> {
             affirmationIndex = (affirmationIndex + 1) % AFFIRMATIONS.length;
             lblAffirmation.setText(AFFIRMATIONS[affirmationIndex]);
         }).start();
+    }
 
-        // Esc closes the app
-        getRootPane().getInputMap(javax.swing.JComponent.WHEN_IN_FOCUSED_WINDOW).put(javax.swing.KeyStroke.getKeyStroke("ESCAPE"), "exit");
-        getRootPane().getActionMap().put("exit", new javax.swing.AbstractAction() {
-            @Override public void actionPerformed(java.awt.event.ActionEvent e) { System.exit(0); }
-        });
-
-        // fade in
-        try {
-            setOpacity(0f);
-            Timer t = new Timer(15, null);
-            t.addActionListener(e -> {
-                float o = Math.min(1f, getOpacity() + 0.06f);
-                try { setOpacity(o); } catch (Exception ex) { t.stop(); }
-                if (o >= 1f) { t.stop(); }
-            });
-            t.start();
-        } catch (Exception ex) {
-            logger.log(java.util.logging.Level.FINE, "Window translucency not supported", ex);
+    /** Asks MainFrame to show another screen and remembers the chosen role. */
+    private void goTo(String screen, String role) {
+        java.awt.Window window = javax.swing.SwingUtilities.getWindowAncestor(this);
+        if (window instanceof MainFrame) {
+            MainFrame main = (MainFrame) window;
+            main.setSelectedRole(role);
+            main.showScreen(screen);
         }
-    }
-
-    /** Loads /images/usiu.jpeg (inside the project) and rounds its corners. */
-    private javax.swing.ImageIcon loadLogo(int height) {
-        try {
-            java.awt.image.BufferedImage src = javax.imageio.ImageIO.read(getClass().getResource("/images/usiu.jpeg"));
-            int w = src.getWidth() * height / src.getHeight();
-            java.awt.image.BufferedImage out = new java.awt.image.BufferedImage(w, height, java.awt.image.BufferedImage.TYPE_INT_ARGB);
-            java.awt.Graphics2D g = out.createGraphics();
-            g.setRenderingHint(java.awt.RenderingHints.KEY_ANTIALIASING, java.awt.RenderingHints.VALUE_ANTIALIAS_ON);
-            g.setRenderingHint(java.awt.RenderingHints.KEY_INTERPOLATION, java.awt.RenderingHints.VALUE_INTERPOLATION_BICUBIC);
-            g.setClip(new RoundRectangle2D.Float(0, 0, w, height, 16, 16));
-            g.drawImage(src, 0, 0, w, height, null);
-            g.dispose();
-            return new javax.swing.ImageIcon(out);
-        } catch (java.io.IOException | RuntimeException ex) {
-            logger.log(java.util.logging.Level.WARNING, "Logo not found: put usiu.jpeg in the 'images' package", ex);
-            return null;
-        }
-    }
-
-    private static String greeting() {
-        int h = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
-        return h < 12 ? "Good morning" : h < 17 ? "Good afternoon" : "Good evening";
-    }
-
-    /** Placeholder until the login forms exist. */
-    private void openPortal(String role) {
-        // TODO: new LoginForm(role).setVisible(true); dispose();
-        javax.swing.JOptionPane.showMessageDialog(this, role + " portal: the login form is the next screen.");
     }
 
     /**
@@ -233,23 +104,22 @@ public class WelcomeForm extends javax.swing.JFrame {
         lblCopyright = new javax.swing.JLabel();
         lblContact = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("USIU-Africa | Student Counselling System");
-        setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(1100, 700));
 
         topBar.setOpaque(false);
 
         brandPanel.setOpaque(false);
 
-        lblLogo.setForeground(new java.awt.Color(255, 255, 255));
-        lblLogo.setText("USIU-Africa");
+        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/usiu_logo.png"))); // NOI18N
 
         namesPanel.setOpaque(false);
 
         lblCentreTitle.setForeground(new java.awt.Color(255, 255, 255));
+        lblCentreTitle.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         lblCentreTitle.setText("Student Counselling Centre");
 
         lblCentreSub.setForeground(new java.awt.Color(180, 195, 216));
+        lblCentreSub.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         lblCentreSub.setText("FREIDA BROWN STUDENT CENTER  |  2ND FLOOR");
 
         javax.swing.GroupLayout namesPanelLayout = new javax.swing.GroupLayout(namesPanel);
@@ -285,24 +155,33 @@ public class WelcomeForm extends javax.swing.JFrame {
         rightPanel.setOpaque(false);
 
         lblClock.setForeground(new java.awt.Color(180, 195, 216));
-        lblClock.setText("Wed, 11 Nov 2026   10:00:00");
+        lblClock.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        lblClock.setText("Thursday, 13 Nov 2026   10:00:00");
 
+        btnMinimise.setBackground(new java.awt.Color(26, 75, 132));
+        btnMinimise.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
         btnMinimise.setForeground(new java.awt.Color(255, 255, 255));
         btnMinimise.setText("–");
+        btnMinimise.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         btnMinimise.setBorderPainted(false);
         btnMinimise.setContentAreaFilled(false);
         btnMinimise.setFocusPainted(false);
+        btnMinimise.setMargin(new java.awt.Insets(0, 0, 0, 0));
         btnMinimise.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMinimiseActionPerformed(evt);
             }
         });
 
+        btnClose.setBackground(new java.awt.Color(26, 75, 132));
+        btnClose.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
         btnClose.setForeground(new java.awt.Color(255, 255, 255));
         btnClose.setText("×");
+        btnClose.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         btnClose.setBorderPainted(false);
         btnClose.setContentAreaFilled(false);
         btnClose.setFocusPainted(false);
+        btnClose.setMargin(new java.awt.Insets(0, 0, 0, 0));
         btnClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCloseActionPerformed(evt);
@@ -352,18 +231,23 @@ public class WelcomeForm extends javax.swing.JFrame {
         heroPanel.setOpaque(false);
 
         lblGreeting.setForeground(new java.awt.Color(46, 196, 182));
+        lblGreeting.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblGreeting.setText("Welcome  |  your wellbeing matters");
 
         lblTitle1.setForeground(new java.awt.Color(255, 255, 255));
+        lblTitle1.setFont(new java.awt.Font("Segoe UI", 1, 38)); // NOI18N
         lblTitle1.setText("Student Counselling");
 
         lblTitle2.setForeground(new java.awt.Color(255, 215, 122));
+        lblTitle2.setFont(new java.awt.Font("Segoe UI", 1, 38)); // NOI18N
         lblTitle2.setText("System at USIU-Africa");
 
         lblIntro.setForeground(new java.awt.Color(180, 195, 216));
+        lblIntro.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lblIntro.setText("<html>A safe, confidential space where students can<br>book sessions, share how they feel and connect<br>with caring, professional counsellors.</html>");
 
         btnGetStarted.setBackground(new java.awt.Color(245, 179, 53));
+        btnGetStarted.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         btnGetStarted.setForeground(new java.awt.Color(6, 22, 43));
         btnGetStarted.setText("Get Started");
         btnGetStarted.setBorderPainted(false);
@@ -377,6 +261,7 @@ public class WelcomeForm extends javax.swing.JFrame {
         });
 
         btnBook.setBackground(new java.awt.Color(26, 75, 132));
+        btnBook.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         btnBook.setForeground(new java.awt.Color(255, 255, 255));
         btnBook.setText("Book a Session");
         btnBook.setBorderPainted(false);
@@ -389,32 +274,32 @@ public class WelcomeForm extends javax.swing.JFrame {
         });
 
         lblFacts.setForeground(new java.awt.Color(255, 215, 122));
+        lblFacts.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblFacts.setText("Confidential  |  Free of charge  |  Mon - Fri, 8am - 5pm");
 
         lblAffTitle.setForeground(new java.awt.Color(245, 179, 53));
+        lblAffTitle.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
         lblAffTitle.setText("DAILY AFFIRMATION");
 
         lblAffirmation.setForeground(new java.awt.Color(180, 195, 216));
+        lblAffirmation.setFont(new java.awt.Font("Segoe UI", 2, 15)); // NOI18N
         lblAffirmation.setText("It is okay to ask for help. That is a sign of strength.");
 
         javax.swing.GroupLayout heroPanelLayout = new javax.swing.GroupLayout(heroPanel);
         heroPanel.setLayout(heroPanelLayout);
         heroPanelLayout.setHorizontalGroup(
             heroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblGreeting)
+            .addComponent(lblTitle1)
+            .addComponent(lblTitle2)
+            .addComponent(lblIntro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(heroPanelLayout.createSequentialGroup()
-                .addGroup(heroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblGreeting)
-                    .addComponent(lblTitle1)
-                    .addComponent(lblTitle2)
-                    .addComponent(lblIntro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(heroPanelLayout.createSequentialGroup()
-                        .addComponent(btnGetStarted)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnBook, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(lblFacts)
-                    .addComponent(lblAffTitle)
-                    .addComponent(lblAffirmation, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(86, 86, 86))
+                .addComponent(btnGetStarted, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14)
+                .addComponent(btnBook, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(lblFacts)
+            .addComponent(lblAffTitle)
+            .addComponent(lblAffirmation, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         heroPanelLayout.setVerticalGroup(
             heroPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -443,6 +328,7 @@ public class WelcomeForm extends javax.swing.JFrame {
         roleColumn.setOpaque(false);
 
         lblContinueAs.setForeground(new java.awt.Color(245, 179, 53));
+        lblContinueAs.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblContinueAs.setText("CONTINUE AS");
 
         pnlStudent.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -452,9 +338,11 @@ public class WelcomeForm extends javax.swing.JFrame {
         });
 
         pnlStudentTitle.setForeground(new java.awt.Color(255, 255, 255));
+        pnlStudentTitle.setFont(new java.awt.Font("Segoe UI", 1, 19)); // NOI18N
         pnlStudentTitle.setText("Student");
 
         pnlStudentDesc.setForeground(new java.awt.Color(180, 195, 216));
+        pnlStudentDesc.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         pnlStudentDesc.setText("<html>Book appointments, track your mood and<br>access wellbeing resources.</html>");
 
         javax.swing.GroupLayout pnlStudentLayout = new javax.swing.GroupLayout(pnlStudent);
@@ -471,11 +359,11 @@ public class WelcomeForm extends javax.swing.JFrame {
         pnlStudentLayout.setVerticalGroup(
             pnlStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlStudentLayout.createSequentialGroup()
-                .addContainerGap(11, Short.MAX_VALUE)
+                .addContainerGap(21, Short.MAX_VALUE)
                 .addComponent(pnlStudentTitle)
                 .addGap(3, 3, 3)
                 .addComponent(pnlStudentDesc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         pnlCounsellor.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -485,9 +373,11 @@ public class WelcomeForm extends javax.swing.JFrame {
         });
 
         pnlCounsellorTitle.setForeground(new java.awt.Color(255, 255, 255));
+        pnlCounsellorTitle.setFont(new java.awt.Font("Segoe UI", 1, 19)); // NOI18N
         pnlCounsellorTitle.setText("Counsellor");
 
         pnlCounsellorDesc.setForeground(new java.awt.Color(180, 195, 216));
+        pnlCounsellorDesc.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         pnlCounsellorDesc.setText("<html>Manage your schedule, sessions and<br>confidential student notes.</html>");
 
         javax.swing.GroupLayout pnlCounsellorLayout = new javax.swing.GroupLayout(pnlCounsellor);
@@ -499,16 +389,16 @@ public class WelcomeForm extends javax.swing.JFrame {
                 .addGroup(pnlCounsellorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(pnlCounsellorTitle)
                     .addComponent(pnlCounsellorDesc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(70, 70, Short.MAX_VALUE))
         );
         pnlCounsellorLayout.setVerticalGroup(
             pnlCounsellorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlCounsellorLayout.createSequentialGroup()
-                .addContainerGap(24, Short.MAX_VALUE)
+                .addContainerGap(21, Short.MAX_VALUE)
                 .addComponent(pnlCounsellorTitle)
                 .addGap(3, 3, 3)
                 .addComponent(pnlCounsellorDesc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         pnlAdmin.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -518,9 +408,11 @@ public class WelcomeForm extends javax.swing.JFrame {
         });
 
         pnlAdminTitle.setForeground(new java.awt.Color(255, 255, 255));
+        pnlAdminTitle.setFont(new java.awt.Font("Segoe UI", 1, 19)); // NOI18N
         pnlAdminTitle.setText("Administrator");
 
         pnlAdminDesc.setForeground(new java.awt.Color(180, 195, 216));
+        pnlAdminDesc.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         pnlAdminDesc.setText("<html>Manage users, view reports and<br>configure the system.</html>");
 
         javax.swing.GroupLayout pnlAdminLayout = new javax.swing.GroupLayout(pnlAdmin);
@@ -532,18 +424,19 @@ public class WelcomeForm extends javax.swing.JFrame {
                 .addGroup(pnlAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(pnlAdminTitle)
                     .addComponent(pnlAdminDesc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(70, 70, Short.MAX_VALUE))
         );
         pnlAdminLayout.setVerticalGroup(
             pnlAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlAdminLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(21, Short.MAX_VALUE)
                 .addComponent(pnlAdminTitle)
                 .addGap(3, 3, 3)
                 .addComponent(pnlAdminDesc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
+        lblRegister.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         lblRegister.setForeground(new java.awt.Color(255, 215, 122));
         lblRegister.setText("New student?  Create your account");
         lblRegister.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -556,15 +449,14 @@ public class WelcomeForm extends javax.swing.JFrame {
         roleColumn.setLayout(roleColumnLayout);
         roleColumnLayout.setHorizontalGroup(
             roleColumnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pnlStudent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(pnlCounsellor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(pnlAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(roleColumnLayout.createSequentialGroup()
                 .addGap(6, 6, 6)
                 .addGroup(roleColumnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblContinueAs)
-                    .addComponent(lblRegister))
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addComponent(pnlStudent, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblRegister)))
         );
         roleColumnLayout.setVerticalGroup(
             roleColumnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -573,11 +465,11 @@ public class WelcomeForm extends javax.swing.JFrame {
                 .addComponent(lblContinueAs)
                 .addGap(8, 8, 8)
                 .addComponent(pnlStudent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(2, 2, 2)
                 .addComponent(pnlCounsellor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(2, 2, 2)
                 .addComponent(pnlAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(10, 10, 10)
                 .addComponent(lblRegister)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -587,11 +479,11 @@ public class WelcomeForm extends javax.swing.JFrame {
         centerPanelLayout.setHorizontalGroup(
             centerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(centerPanelLayout.createSequentialGroup()
-                .addGap(56, 56, 56)
+                .addGap(44, 44, 44)
                 .addComponent(heroPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(40, 40, 40)
+                .addGap(30, 30, 30)
                 .addComponent(roleColumn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(56, 56, 56))
+                .addGap(44, 44, 44))
         );
         centerPanelLayout.setVerticalGroup(
             centerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -602,9 +494,11 @@ public class WelcomeForm extends javax.swing.JFrame {
         footerPanel.setOpaque(false);
 
         lblCopyright.setForeground(new java.awt.Color(180, 195, 216));
-        lblCopyright.setText("(c) 2026 USIU-Africa  |  Student Counselling System  |  OOAD Project");
+        lblCopyright.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        lblCopyright.setText("© 2026 USIU-Africa  |  Student Counselling System  |  OOAD Project");
 
         lblContact.setForeground(new java.awt.Color(180, 195, 216));
+        lblContact.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         lblContact.setText("counsel@usiu.ac.ke   |   Esc to exit");
 
         javax.swing.GroupLayout footerPanelLayout = new javax.swing.GroupLayout(footerPanel);
@@ -645,8 +539,8 @@ public class WelcomeForm extends javax.swing.JFrame {
                 .addComponent(footerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -655,20 +549,18 @@ public class WelcomeForm extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-
-        pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGetStartedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGetStartedActionPerformed
-        openPortal("Student");   // quick start: same as the Student card
+        goTo("LOGIN", "STUDENT");
     }//GEN-LAST:event_btnGetStartedActionPerformed
 
     private void btnBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBookActionPerformed
-        javax.swing.JOptionPane.showMessageDialog(this, "Appointment booking is the next module.");
+        goTo("LOGIN", "STUDENT");
     }//GEN-LAST:event_btnBookActionPerformed
 
     private void btnMinimiseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinimiseActionPerformed
-        setState(java.awt.Frame.ICONIFIED);
+        ((java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this)).setState(java.awt.Frame.ICONIFIED);
     }//GEN-LAST:event_btnMinimiseActionPerformed
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
@@ -676,45 +568,20 @@ public class WelcomeForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCloseActionPerformed
 
     private void pnlStudentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlStudentMouseClicked
-        openPortal("Student");
+        goTo("LOGIN", "STUDENT");
     }//GEN-LAST:event_pnlStudentMouseClicked
 
     private void pnlCounsellorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlCounsellorMouseClicked
-        openPortal("Counsellor");
+        goTo("LOGIN", "COUNSELLOR");
     }//GEN-LAST:event_pnlCounsellorMouseClicked
 
     private void pnlAdminMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlAdminMouseClicked
-        openPortal("Administrator");
+        goTo("LOGIN", "ADMIN");
     }//GEN-LAST:event_pnlAdminMouseClicked
 
     private void lblRegisterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRegisterMouseClicked
-        javax.swing.JOptionPane.showMessageDialog(this, "Student registration form is coming next.");
+        goTo("REGISTER", "STUDENT");
     }//GEN-LAST:event_lblRegisterMouseClicked
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
-            logger.log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new WelcomeForm().setVisible(true));
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private utils.AnimatedBackground background;
