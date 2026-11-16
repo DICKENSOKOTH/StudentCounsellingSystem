@@ -193,7 +193,7 @@ public class ManageAvailability extends javax.swing.JFrame {
             logger.log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        FlatMacDarkLaf.setup();
+        
  
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> new ManageAvailability().setVisible(true));
