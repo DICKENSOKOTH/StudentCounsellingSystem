@@ -1,6 +1,8 @@
 package studentcounsellingsystem;
 
 import forms.WelcomePanel;
+import forms.LoginPanel;
+import forms.RegistrationPanel;
 import forms.student;
 import java.awt.CardLayout;
 import java.awt.Point;
@@ -22,6 +24,7 @@ import javax.swing.JPanel;
  * Teammates: add your panel in the constructor with
  *     addScreen("LOGIN", new LoginPanel());
  */
+
 public class MainFrame extends javax.swing.JFrame {
 
     private final CardLayout cardLayout = new CardLayout();
@@ -38,7 +41,8 @@ public class MainFrame extends javax.swing.JFrame {
 
         // ---- register screens here ----
         addScreen("WELCOME", new WelcomePanel());
-        // addScreen("LOGIN", new LoginPanel());
+        addScreen("LOGIN", new LoginPanel());
+        addScreen("REGISTER", new RegistrationPanel());
         addScreen("STUDENT_DASHBOARD", new student());
         // addScreen("COUNSELLOR_DASHBOARD", new CounsellorDashboardPanel());
 
@@ -85,4 +89,10 @@ public class MainFrame extends javax.swing.JFrame {
             @Override public void actionPerformed(java.awt.event.ActionEvent e) { System.exit(0); }
         });
     }
+    
+    public static void main(String[] args) {
+    java.awt.EventQueue.invokeLater(() -> new MainFrame().setVisible(true));
 }
+}
+
+
