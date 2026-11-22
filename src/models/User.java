@@ -4,10 +4,5 @@
  */
 package models;
 
-/**
- *
- * @author Faith Varaidzo
- */
-public class User {
-    
-}
+public record User(int userId, String fullName, String email,
+    String phone, String passwordHash, String role) {}
