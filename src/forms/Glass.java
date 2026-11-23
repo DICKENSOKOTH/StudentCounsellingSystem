@@ -12,6 +12,9 @@ import java.awt.geom.Path2D;
 
 import javax.swing.plaf.basic.BasicArrowButton;
 import javax.swing.plaf.basic.BasicComboBoxUI;
+import javax.swing.plaf.basic.BasicComboPopup;
+import javax.swing.plaf.basic.ComboPopup;
+
 
 public class Glass {
 
@@ -38,8 +41,19 @@ public class Glass {
         g2.dispose();
     }
 
+    // ------------------------------------------------------------------
     public static class Panel extends JPanel {
+        private String note = null;                 // small red message under a child component
+        private Component noteAnchor = null;
+
         public Panel() { setOpaque(false); }
+
+        /** Shows a small red message just under the anchor component. Pass null to clear it. */
+        public void setNote(Component anchor, String text) {
+            noteAnchor = anchor;
+            note = text;
+            repaint();
+        }
 
         @Override protected void paintComponent(Graphics g) {
             Graphics2D g2 = prep(g);
@@ -63,11 +77,20 @@ public class Glass {
             g2.fill(card);
             g2.setColor(new Color(255, 255, 255, 140));
             g2.draw(card);
+
+            if (note != null && noteAnchor != null) {   // error message under the anchor
+                g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+                g2.setFont(getFont().deriveFont(Font.BOLD, 11f));
+                g2.setColor(new Color(200, 40, 40));
+                g2.drawString(note, noteAnchor.getX() + 4, noteAnchor.getY() + noteAnchor.getHeight() + 13);
+            }
+
             g2.dispose();
             super.paintComponent(g);
         }
     }
 
+    // ------------------------------------------------------------------
     public static class TextField extends JTextField {
         public TextField() { setOpaque(false); setBorder(null); }
         @Override public void setBorder(Border b) { super.setBorder(new EmptyBorder(0, 12, 0, 12)); }
@@ -75,21 +98,40 @@ public class Glass {
             paintGlass(g, this, 20, 90);
             super.paintComponent(g);
         }
-    }   // <- TextField closes here
+    }
 
+    // ------------------------------------------------------------------
     public static class ComboBox extends JComboBox<String> {
         public ComboBox() {
             setOpaque(false);
+            setForeground(new Color(40, 40, 40));
             setBorder(new EmptyBorder(0, 6, 0, 6));
             setUI(new BasicComboBoxUI() {
                 @Override protected JButton createArrowButton() {
-                    Color none = new Color(0, 0, 0, 0);
-                    BasicArrowButton b = new BasicArrowButton(SwingConstants.SOUTH,
-                            none, none, new Color(70, 70, 70), none);
+                    // a plain button that paints only a small chevron (no square fill, no bevel)
+                    JButton b = new JButton() {
+                        @Override protected void paintComponent(Graphics g) {
+                            Graphics2D g2 = prep(g);
+                            g2.setColor(new Color(70, 70, 70));
+                            g2.setStroke(new BasicStroke(1.8f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
+                            int cx = getWidth() / 2, cy = getHeight() / 2;
+                            g2.drawLine(cx - 4, cy - 2, cx, cy + 2);
+                            g2.drawLine(cx, cy + 2, cx + 4, cy - 2);
+                            g2.dispose();
+                        }
+                    };
                     b.setOpaque(false);
                     b.setContentAreaFilled(false);
+                    b.setBorderPainted(false);
+                    b.setFocusPainted(false);
                     b.setBorder(null);
+                    b.setBackground(new Color(0, 0, 0, 0));
                     return b;
+                }
+                @Override protected ComboPopup createPopup() {
+                    BasicComboPopup p = (BasicComboPopup) super.createPopup();
+                    p.setBorder(BorderFactory.createLineBorder(new Color(200, 200, 200)));
+                    return p;
                 }
                 @Override public void paintCurrentValueBackground(Graphics g, Rectangle r, boolean hasFocus) { }
             });
@@ -97,8 +139,15 @@ public class Glass {
                 @Override public java.awt.Component getListCellRendererComponent(
                         JList<?> list, Object value, int index, boolean sel, boolean focus) {
                     super.getListCellRendererComponent(list, value, index, sel, focus);
-                    setOpaque(index >= 0);                 // closed box stays see-through
-                    setBorder(new EmptyBorder(0, 10, 0, 0));
+                    setBorder(new EmptyBorder(6, 10, 6, 10));
+                    if (index >= 0) {                                   // items in the open list
+                        setOpaque(true);
+                        setBackground(sel ? GREEN : new Color(250, 250, 250));
+                        setForeground(sel ? Color.WHITE : new Color(40, 40, 40));
+                    } else {                                            // the closed box stays see-through
+                        setOpaque(false);
+                        setForeground(new Color(40, 40, 40));
+                    }
                     return this;
                 }
             });
@@ -108,58 +157,92 @@ public class Glass {
             paintGlass(g, this, 20, 90);
             super.paintComponent(g);
         }
-    }   // <- ComboBox closes here
+    }
 
+    // ------------------------------------------------------------------
     public static class PasswordField extends JPasswordField {
-    private final char defaultEcho = getEchoChar();
-    private boolean shown = false;
-    private static final int EYE_ZONE = 40;   // clickable area on the right
+        private final char defaultEcho = getEchoChar();
+        private boolean shown = false;
+        private boolean error = false;                 // red outline when true
+        private Timer shakeTimer;
+        private static final int EYE_ZONE = 40;        // clickable area on the right
 
-    public PasswordField() {
-        setOpaque(false);
-        setBorder(null);
-        MouseAdapter m = new MouseAdapter() {
-            @Override public void mouseClicked(MouseEvent e) {
-                if (e.getX() > getWidth() - EYE_ZONE) {
-                    shown = !shown;
-                    setEchoChar(shown ? (char) 0 : defaultEcho);
-                    repaint();
+        public PasswordField() {
+            setOpaque(false);
+            setBorder(null);
+            MouseAdapter m = new MouseAdapter() {
+                @Override public void mouseClicked(MouseEvent e) {
+                    if (e.getX() > getWidth() - EYE_ZONE) {
+                        shown = !shown;
+                        setEchoChar(shown ? (char) 0 : defaultEcho);
+                        repaint();
+                    }
                 }
+                @Override public void mouseMoved(MouseEvent e) {
+                    setCursor(Cursor.getPredefinedCursor(
+                            e.getX() > getWidth() - EYE_ZONE ? Cursor.HAND_CURSOR : Cursor.TEXT_CURSOR));
+                }
+            };
+            addMouseListener(m);
+            addMouseMotionListener(m);
+        }
+
+        /** Turns the red outline on or off. */
+        public void setError(boolean e) {
+            error = e;
+            repaint();
+        }
+
+        /** Shakes the field left and right once. */
+        public void shake() {
+            if (shakeTimer != null && shakeTimer.isRunning()) return;
+            final Point origin = getLocation();
+            final int[] offsets = {-8, 8, -6, 6, -4, 4, -2, 2, 0};
+            final int[] i = {0};
+            shakeTimer = new Timer(35, e -> {
+                setLocation(origin.x + offsets[i[0]], origin.y);
+                if (++i[0] >= offsets.length) {
+                    ((Timer) e.getSource()).stop();
+                    setLocation(origin);
+                }
+            });
+            shakeTimer.start();
+        }
+
+        @Override public void setBorder(Border b) { super.setBorder(new EmptyBorder(0, 12, 0, EYE_ZONE)); }
+
+        @Override protected void paintComponent(Graphics g) {
+            paintGlass(g, this, 20, 90);
+            super.paintComponent(g);
+
+            if (error) {                                 // red outline
+                Graphics2D r = prep(g);
+                r.setColor(new Color(220, 60, 60));
+                r.setStroke(new BasicStroke(1.8f));
+                r.drawRoundRect(1, 1, getWidth() - 3, getHeight() - 3, 20, 20);
+                r.dispose();
             }
-            @Override public void mouseMoved(MouseEvent e) {
-                setCursor(Cursor.getPredefinedCursor(
-                        e.getX() > getWidth() - EYE_ZONE ? Cursor.HAND_CURSOR : Cursor.TEXT_CURSOR));
+
+            Graphics2D g2 = prep(g);
+            int cx = getWidth() - 20, cy = getHeight() / 2;
+            g2.setColor(new Color(90, 90, 90));
+            g2.setStroke(new BasicStroke(1.4f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
+
+            Path2D eye = new Path2D.Double();            // almond-shaped eye outline
+            eye.moveTo(cx - 7, cy);
+            eye.quadTo(cx, cy - 8, cx + 7, cy);
+            eye.quadTo(cx, cy + 8, cx - 7, cy);
+            g2.draw(eye);
+            g2.fillOval(cx - 2, cy - 2, 4, 4);           // pupil
+
+            if (!shown) {                                // slash when the password is hidden
+                g2.drawLine(cx - 6, cy + 6, cx + 6, cy - 6);
             }
-        };
-        addMouseListener(m);
-        addMouseMotionListener(m);
+            g2.dispose();
+        }
     }
 
-    @Override public void setBorder(Border b) { super.setBorder(new EmptyBorder(0, 12, 0, EYE_ZONE)); }
-
-    @Override protected void paintComponent(Graphics g) {
-        paintGlass(g, this, 20, 90);
-        super.paintComponent(g);
-
-        Graphics2D g2 = prep(g);
-        int cx = getWidth() - 20, cy = getHeight() / 2;
-    g2.setColor(new Color(90, 90, 90));
-    g2.setStroke(new BasicStroke(1.4f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
-
-    Path2D eye = new Path2D.Double();           // almond-shaped eye outline
-    eye.moveTo(cx - 7, cy);
-    eye.quadTo(cx, cy - 8, cx + 7, cy);
-    eye.quadTo(cx, cy + 8, cx - 7, cy);
-    g2.draw(eye);
-    g2.fillOval(cx - 2, cy - 2, 4, 4);           // pupil
-
-    if (!shown) {                                // slash when the password is hidden
-        g2.drawLine(cx - 6, cy + 6, cx + 6, cy - 6);
-    }
-    g2.dispose();
-}
-    }
-
+    // ------------------------------------------------------------------
     public static class Button extends JButton {
         public Button() {
             setContentAreaFilled(false);
