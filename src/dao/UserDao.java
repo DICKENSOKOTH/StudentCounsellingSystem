@@ -33,41 +33,86 @@ public class UserDao {
     }
 
     /** Creates the users row and the students row together. Returns false if the email or reg number exists. */
-    public boolean registerStudent(String fullName, String email, String phone, String password,
-                                   String regNo, String course, int year) throws SQLException {
-        String userSql = "INSERT INTO users (full_name, email, phone, password_hash, role) VALUES (?, ?, ?, ?, 'STUDENT')";
-        String studentSql = "INSERT INTO students (user_id, registration_number, course, year_of_study) VALUES (?, ?, ?, ?)";
-        try (Connection c = DBConnection.getConnection()) {
-            if (c == null) throw new SQLException("No database connection");
-            c.setAutoCommit(false);
-            try {
-                int userId;
-                try (PreparedStatement ps = c.prepareStatement(userSql, Statement.RETURN_GENERATED_KEYS)) {
-                    ps.setString(1, fullName);
-                    ps.setString(2, email.trim().toLowerCase());
-                    ps.setString(3, phone);
-                    ps.setString(4, hash(password));
-                    ps.executeUpdate();
-                    try (ResultSet keys = ps.getGeneratedKeys()) { keys.next(); userId = keys.getInt(1); }
-                }
-                try (PreparedStatement ps = c.prepareStatement(studentSql)) {
-                    ps.setInt(1, userId);
-                    ps.setString(2, regNo);
-                    ps.setString(3, course);
-                    ps.setInt(4, year);
-                    ps.executeUpdate();
-                }
-                c.commit();
-                return true;
-            } catch (SQLIntegrityConstraintViolationException e) {
-                c.rollback();
-                return false;
-            } catch (SQLException e) {
-                c.rollback();
-                throw e;
+    /** Returns null on success, or an error message. */
+public String registerStudent(String fullName, String email, String phone, String password,
+                              String regNo, String course, int year) throws SQLException {
+    try (Connection c = DBConnection.getConnection()) {
+        if (c == null) throw new SQLException("No database connection");
+        c.setAutoCommit(false);
+        try {
+            int userId = insertUser(c, fullName, email, phone, password, "STUDENT");
+            try (PreparedStatement ps = c.prepareStatement(
+                    "INSERT INTO students (user_id, registration_number, course, year_of_study) VALUES (?, ?, ?, ?)")) {
+                ps.setInt(1, userId);
+                ps.setString(2, regNo);
+                ps.setString(3, course);
+                ps.setInt(4, year);
+                ps.executeUpdate();
             }
+            c.commit();
+            return null;
+        } catch (SQLIntegrityConstraintViolationException e) {
+            c.rollback();
+            return duplicateMessage(e);
+        } catch (SQLException e) {
+            c.rollback();
+            throw e;
         }
     }
+}
+
+
+public String registerCounsellor(String fullName, String email, String phone, String password,
+                                 String qualification, String religion, String gender) throws SQLException {
+    try (Connection c = DBConnection.getConnection()) {
+        if (c == null) throw new SQLException("No database connection");
+        c.setAutoCommit(false);
+        try {
+            int userId = insertUser(c, fullName, email, phone, password, "COUNSELLOR");
+            try (PreparedStatement ps = c.prepareStatement(
+                    "INSERT INTO counsellors (user_id, qualification, religion, gender) VALUES (?, ?, ?, ?)")) {
+                ps.setInt(1, userId);
+                ps.setString(2, qualification);
+                ps.setString(3, religion);
+                ps.setString(4, gender);
+                ps.executeUpdate();
+            }
+            c.commit();
+            return null;
+        } catch (SQLIntegrityConstraintViolationException e) {
+            c.rollback();
+            return duplicateMessage(e);
+        } catch (SQLException e) {
+            c.rollback();
+            throw e;
+        }
+    }
+}
+
+private int insertUser(Connection c, String fullName, String email, String phone,
+                       String password, String role) throws SQLException {
+    try (PreparedStatement ps = c.prepareStatement(
+            "INSERT INTO users (full_name, email, phone, password_hash, role) VALUES (?, ?, ?, ?, ?)",
+            Statement.RETURN_GENERATED_KEYS)) {
+        ps.setString(1, fullName);
+        ps.setString(2, email.trim().toLowerCase());
+        ps.setString(3, phone.isEmpty() ? null : phone);
+        ps.setString(4, hash(password));
+        ps.setString(5, role);
+        ps.executeUpdate();
+        try (ResultSet keys = ps.getGeneratedKeys()) {
+            keys.next();
+            return keys.getInt(1);
+        }
+    }
+}
+
+private String duplicateMessage(SQLIntegrityConstraintViolationException e) {
+    String m = String.valueOf(e.getMessage()).toLowerCase();
+    if (m.contains("email")) return "That email is already registered.";
+    if (m.contains("registration")) return "That student ID is already registered.";
+    return "That account already exists.";
+}
 
     private static String hash(String s) {
         try {
