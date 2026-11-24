@@ -170,44 +170,46 @@ protected void paintComponent(java.awt.Graphics g) {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    String email = jTextField1.getText().trim();
-    String password = new String(jPasswordField1.getPassword());
+        String email = jTextField1.getText().trim();
+        String password = new String(jPasswordField1.getPassword());
 
-    if (email.isEmpty() || password.isEmpty()) {
-        javax.swing.JOptionPane.showMessageDialog(this, "Enter your email and password.");
-        return;
-    }
+        if (email.isEmpty() || password.isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(this,
+                    "Enter your email and password.");
+            return;
+        }
 
-    models.User user;
-    try {
-        user = new dao.UserDao().login(email, password);
-    } catch (java.sql.SQLException ex) {
-        javax.swing.JOptionPane.showMessageDialog(this,
-        "Cannot reach the database. Check that MySQL is running in XAMPP.");
-    return;
-    }
+        models.User user;
+        try {
+            user = new dao.UserDao().login(email, password);
+        } catch (java.sql.SQLException ex) {
+            javax.swing.JOptionPane.showMessageDialog(this,
+                    "Could not reach the database. Check that MySQL is running in XAMPP.");
+            return;
+        }
 
-    if (user == null) {
-        javax.swing.JOptionPane.showMessageDialog(this, "Wrong email or password.",
-        "Login failed", javax.swing.JOptionPane.ERROR_MESSAGE);
-    return;
-    }
+        if (user == null) {
+            javax.swing.JOptionPane.showMessageDialog(this,
+                    "Incorrect email or password.");
+            return;
+        }
 
-    studentcounsellingsystem.MainFrame main =
-    (studentcounsellingsystem.MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+        if (!"STUDENT".equals(user.role())) {
+            javax.swing.JOptionPane.showMessageDialog(this,
+                    "Only the student dashboard is connected so far.");
+            return;
+        }
 
-    // the role picked on the welcome page must match the account's real role
-    String chosen = main.getSelectedRole();
-    if (chosen != null && !user.role().equals("ADMIN") && !chosen.equals(user.role())) {
-        javax.swing.JOptionPane.showMessageDialog(this,
-        "This is a " + user.role().toLowerCase() + " account, not a " + chosen.toLowerCase() + " account.");
-        return;
-    }
+        studentcounsellingsystem.MainFrame main =
+                (studentcounsellingsystem.MainFrame)
+                javax.swing.SwingUtilities.getWindowAncestor(this);
 
-    jPasswordField1.setText("");
-    main.showScreen(user.role() + "_DASHBOARD");
+        main.setCurrentUser(user);
+
+        jPasswordField1.setText("");
+
+        main.showScreen("STUDENT_DASHBOARD");
     }//GEN-LAST:event_jButton1ActionPerformed
-
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
         ((studentcounsellingsystem.MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this)).showScreen("REGISTER");
     }//GEN-LAST:event_jLabel5MouseClicked
