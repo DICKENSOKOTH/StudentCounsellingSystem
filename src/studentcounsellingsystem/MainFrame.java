@@ -4,6 +4,7 @@ import forms.WelcomePanel;
 import forms.LoginPanel;
 import forms.RegistrationPanel;
 import forms.student;
+import models.User;
 import java.awt.CardLayout;
 import java.awt.Point;
 import java.awt.event.ComponentAdapter;
@@ -31,6 +32,7 @@ public class MainFrame extends javax.swing.JFrame {
     private final JPanel cards = new JPanel(cardLayout);
     private final Set<String> screens = new HashSet<>();
     private String selectedRole;     // "STUDENT", "COUNSELLOR" or "ADMIN" (set on the welcome page)
+    private User currentUser;
     private Point dragOffset;
 
     public MainFrame() {
@@ -67,6 +69,13 @@ public class MainFrame extends javax.swing.JFrame {
 
     public String getSelectedRole() { return selectedRole; }
     public void setSelectedRole(String role) { this.selectedRole = role; }
+    
+    public User getCurrentUser() {
+    return currentUser;
+}
+public void setCurrentUser(User currentUser) {
+    this.currentUser = currentUser;
+}
 
     /** Rounded corners, drag from anywhere, Esc to exit. */
     private void setupWindow() {
