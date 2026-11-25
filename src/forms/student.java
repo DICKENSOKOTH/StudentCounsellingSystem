@@ -3488,46 +3488,59 @@ public class student extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        sidebarpanel = new javax.swing.JPanel();
-        titlelabel = new javax.swing.JLabel();
+        navSidebarDesign = new javax.swing.JPanel();
+        brand = new javax.swing.JLabel();
         studentdashboard = new javax.swing.JButton();
         bookappointment = new javax.swing.JButton();
         myappointments = new javax.swing.JButton();
         studentprofile = new javax.swing.JButton();
-        logout = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        studentcontentpanel = new javax.swing.JPanel();
-        dashboardheading = new javax.swing.JLabel();
-        WelcomeMessage = new javax.swing.JLabel();
+        logoutButton = new javax.swing.JButton();
+        deleteButton = new javax.swing.JButton();
+        menu = new javax.swing.JButton();
+        backButton = new javax.swing.JButton();
+        exitButton = new javax.swing.JButton();
+        backdropDesign = new javax.swing.JPanel();
+        greetingLabelDesign = new javax.swing.JLabel();
+        subtitleLabelDesign = new javax.swing.JLabel();
         upcomingcardPanel = new javax.swing.JPanel();
-        upcommingapts = new javax.swing.JLabel();
-        upcomingcount = new javax.swing.JLabel();
+        upcomingTitleLabel = new javax.swing.JLabel();
+        upcomingValueDesign = new javax.swing.JLabel();
+        upcomingCaptionLabel = new javax.swing.JLabel();
         pendingcardPanel = new javax.swing.JPanel();
-        pendingapts = new javax.swing.JLabel();
-        pendingcount = new javax.swing.JLabel();
+        pendingTitleLabel = new javax.swing.JLabel();
+        pendingValueDesign = new javax.swing.JLabel();
+        pendingCaptionLabel = new javax.swing.JLabel();
         completedcardPanel = new javax.swing.JPanel();
-        completedapts = new javax.swing.JLabel();
-        completedcount = new javax.swing.JLabel();
-        appointmentsHeading = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        aptstable = new javax.swing.JTable();
-        quickactions = new javax.swing.JLabel();
-        quickbook = new javax.swing.JButton();
-        quickcancel = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        completedTitleLabel = new javax.swing.JLabel();
+        completedValueDesign = new javax.swing.JLabel();
+        completedCaptionLabel = new javax.swing.JLabel();
+        sectionTitle = new javax.swing.JLabel();
+        tableCard = new javax.swing.JScrollPane();
+        dashboardTableDesign = new javax.swing.JTable();
+        bookButton = new javax.swing.JButton();
+        cancelButton = new javax.swing.JButton();
+        rescheduleButton = new javax.swing.JButton();
+        date = new javax.swing.JLabel();
+        minimise = new javax.swing.JButton();
+        exitWindow = new javax.swing.JButton();
+        viewAll = new javax.swing.JButton();
+        calendarCard = new javax.swing.JPanel();
+        legend = new javax.swing.JLabel();
+        dashboardCalendarDesign = new javax.swing.JPanel();
+        calendarMonthLabel = new javax.swing.JLabel();
+        eyebrow = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(1100, 700));
         setLayout(new java.awt.BorderLayout());
 
-        sidebarpanel.setBackground(new java.awt.Color(0, 51, 102));
-        sidebarpanel.setPreferredSize(new java.awt.Dimension(220, 700));
+        navSidebarDesign.setBackground(java.awt.Color.black);
+        navSidebarDesign.setPreferredSize(new java.awt.Dimension(236, 700));
 
-        titlelabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        titlelabel.setForeground(new java.awt.Color(255, 255, 255));
-        titlelabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titlelabel.setText("STUDENT PORTAL");
-        titlelabel.setToolTipText("");
+        brand.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        brand.setForeground(new java.awt.Color(255, 255, 255));
+        brand.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        brand.setText("<html><b>USIU-AFRICA</b><br><font color=\"#2EC4B6\" size=\"2\">STUDENT PORTAL</font><br><font color=\"#B4C3D8\" size=\"1\">COUNSELLING SERVICES</font></html>");
+        brand.setToolTipText("");
 
         studentdashboard.setText("Dashboard");
         studentdashboard.addActionListener(this::studentdashboardActionPerformed);
@@ -3539,68 +3552,86 @@ public class student extends javax.swing.JPanel {
 
         studentprofile.setText("My Profile");
 
-        logout.setText("Logout");
+        logoutButton.setText("Logout");
 
-        jButton1.setText("Delete Account");
+        deleteButton.setText("Delete Account");
 
-        javax.swing.GroupLayout sidebarpanelLayout = new javax.swing.GroupLayout(sidebarpanel);
-        sidebarpanel.setLayout(sidebarpanelLayout);
-        sidebarpanelLayout.setHorizontalGroup(
-            sidebarpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(sidebarpanelLayout.createSequentialGroup()
+        menu.setText("Menu");
+
+        backButton.setText("Back to Welcome");
+
+        exitButton.setText("Exit");
+
+        javax.swing.GroupLayout navSidebarDesignLayout = new javax.swing.GroupLayout(navSidebarDesign);
+        navSidebarDesign.setLayout(navSidebarDesignLayout);
+        navSidebarDesignLayout.setHorizontalGroup(
+            navSidebarDesignLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(navSidebarDesignLayout.createSequentialGroup()
                 .addGap(32, 32, 32)
-                .addGroup(sidebarpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(titlelabel)
-                    .addGroup(sidebarpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(logout, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(navSidebarDesignLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(backButton)
+                    .addComponent(brand, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(navSidebarDesignLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(exitButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(menu, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(deleteButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(logoutButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(studentprofile, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(myappointments, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(studentdashboard, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(bookappointment, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(73, Short.MAX_VALUE))
         );
-        sidebarpanelLayout.setVerticalGroup(
-            sidebarpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(sidebarpanelLayout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(titlelabel)
-                .addGap(35, 35, 35)
+        navSidebarDesignLayout.setVerticalGroup(
+            navSidebarDesignLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(navSidebarDesignLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(brand, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(menu)
+                .addGap(32, 32, 32)
                 .addComponent(studentdashboard)
-                .addGap(44, 44, 44)
+                .addGap(39, 39, 39)
                 .addComponent(bookappointment)
-                .addGap(40, 40, 40)
+                .addGap(38, 38, 38)
                 .addComponent(studentprofile)
-                .addGap(40, 40, 40)
+                .addGap(42, 42, 42)
                 .addComponent(myappointments)
-                .addGap(41, 41, 41)
-                .addComponent(logout)
-                .addGap(61, 61, 61)
-                .addComponent(jButton1)
-                .addContainerGap(187, Short.MAX_VALUE))
+                .addGap(29, 29, 29)
+                .addComponent(backButton)
+                .addGap(37, 37, 37)
+                .addComponent(logoutButton)
+                .addGap(36, 36, 36)
+                .addComponent(exitButton)
+                .addGap(50, 50, 50)
+                .addComponent(deleteButton)
+                .addContainerGap(123, Short.MAX_VALUE))
         );
 
-        add(sidebarpanel, java.awt.BorderLayout.LINE_START);
+        add(navSidebarDesign, java.awt.BorderLayout.LINE_START);
 
-        studentcontentpanel.setBackground(new java.awt.Color(204, 204, 255));
-        studentcontentpanel.setPreferredSize(new java.awt.Dimension(880, 700));
+        backdropDesign.setBackground(java.awt.Color.darkGray);
+        backdropDesign.setPreferredSize(new java.awt.Dimension(880, 700));
 
-        dashboardheading.setFont(new java.awt.Font("Segoe UI", 1, 26)); // NOI18N
-        dashboardheading.setForeground(new java.awt.Color(51, 51, 51));
-        dashboardheading.setText("Student Dashboard");
+        greetingLabelDesign.setFont(new java.awt.Font("Segoe UI", 1, 27)); // NOI18N
+        greetingLabelDesign.setForeground(java.awt.Color.white);
+        greetingLabelDesign.setText("Good evening, Student");
 
-        WelcomeMessage.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        WelcomeMessage.setForeground(new java.awt.Color(102, 102, 102));
-        WelcomeMessage.setText("Welcome back! Here's an overview of your counseling activity.");
+        subtitleLabelDesign.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        subtitleLabelDesign.setForeground(java.awt.Color.lightGray);
+        subtitleLabelDesign.setText("Student ID: STU-0001. Here's an overview of your counselling activity.");
 
-        upcomingcardPanel.setBackground(new java.awt.Color(204, 255, 255));
+        upcomingcardPanel.setBackground(java.awt.Color.cyan);
         upcomingcardPanel.setPreferredSize(new java.awt.Dimension(230, 120));
 
-        upcommingapts.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        upcommingapts.setText("UPCOMING APPOINTMENTS");
+        upcomingTitleLabel.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        upcomingTitleLabel.setText("UPCOMING APPOINTMENTS");
 
-        upcomingcount.setFont(new java.awt.Font("Segoe UI", 1, 28)); // NOI18N
-        upcomingcount.setText("0");
+        upcomingValueDesign.setFont(new java.awt.Font("Segoe UI", 1, 32)); // NOI18N
+        upcomingValueDesign.setText("0");
+
+        upcomingCaptionLabel.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        upcomingCaptionLabel.setText("Active bookings from today");
 
         javax.swing.GroupLayout upcomingcardPanelLayout = new javax.swing.GroupLayout(upcomingcardPanel);
         upcomingcardPanel.setLayout(upcomingcardPanelLayout);
@@ -3610,30 +3641,38 @@ public class student extends javax.swing.JPanel {
                 .addGroup(upcomingcardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(upcomingcardPanelLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(upcommingapts))
+                        .addComponent(upcomingTitleLabel))
                     .addGroup(upcomingcardPanelLayout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(upcomingcount, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(65, Short.MAX_VALUE))
+                        .addGap(130, 130, 130)
+                        .addComponent(upcomingValueDesign, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(upcomingcardPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(upcomingCaptionLabel)))
+                .addContainerGap(114, Short.MAX_VALUE))
         );
         upcomingcardPanelLayout.setVerticalGroup(
             upcomingcardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(upcomingcardPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(upcommingapts)
+                .addComponent(upcomingTitleLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(upcomingcount)
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addComponent(upcomingValueDesign)
+                .addGap(18, 18, 18)
+                .addComponent(upcomingCaptionLabel)
+                .addContainerGap(11, Short.MAX_VALUE))
         );
 
-        pendingcardPanel.setBackground(new java.awt.Color(255, 255, 153));
+        pendingcardPanel.setBackground(java.awt.Color.orange);
         pendingcardPanel.setPreferredSize(new java.awt.Dimension(230, 120));
 
-        pendingapts.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        pendingapts.setText("PENDING APPOINTMENTS");
+        pendingTitleLabel.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        pendingTitleLabel.setText("PENDING APPROVAL");
 
-        pendingcount.setFont(new java.awt.Font("Segoe UI", 1, 28)); // NOI18N
-        pendingcount.setText("0");
+        pendingValueDesign.setFont(new java.awt.Font("Segoe UI", 1, 32)); // NOI18N
+        pendingValueDesign.setText("0");
+
+        pendingCaptionLabel.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        pendingCaptionLabel.setText("Waiting for a counsellor");
 
         javax.swing.GroupLayout pendingcardPanelLayout = new javax.swing.GroupLayout(pendingcardPanel);
         pendingcardPanel.setLayout(pendingcardPanelLayout);
@@ -3643,30 +3682,38 @@ public class student extends javax.swing.JPanel {
                 .addGroup(pendingcardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pendingcardPanelLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(pendingapts))
+                        .addComponent(pendingTitleLabel))
                     .addGroup(pendingcardPanelLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(pendingcount, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(77, Short.MAX_VALUE))
+                        .addComponent(pendingValueDesign, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pendingcardPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(pendingCaptionLabel)))
+                .addContainerGap(150, Short.MAX_VALUE))
         );
         pendingcardPanelLayout.setVerticalGroup(
             pendingcardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pendingcardPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(pendingapts)
+                .addComponent(pendingTitleLabel)
                 .addGap(18, 18, 18)
-                .addComponent(pendingcount)
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addComponent(pendingValueDesign)
+                .addGap(18, 18, 18)
+                .addComponent(pendingCaptionLabel)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        completedcardPanel.setBackground(new java.awt.Color(153, 255, 153));
+        completedcardPanel.setBackground(java.awt.Color.magenta);
         completedcardPanel.setPreferredSize(new java.awt.Dimension(230, 120));
 
-        completedapts.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        completedapts.setText("COMPLETED APPOINTMENTS");
+        completedTitleLabel.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        completedTitleLabel.setText("COMPLETED SESSIONS");
 
-        completedcount.setFont(new java.awt.Font("Segoe UI", 1, 28)); // NOI18N
-        completedcount.setText("0");
+        completedValueDesign.setFont(new java.awt.Font("Segoe UI", 1, 32)); // NOI18N
+        completedValueDesign.setText("0");
+
+        completedCaptionLabel.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        completedCaptionLabel.setText("Sessions you have attended");
 
         javax.swing.GroupLayout completedcardPanelLayout = new javax.swing.GroupLayout(completedcardPanel);
         completedcardPanel.setLayout(completedcardPanelLayout);
@@ -3676,26 +3723,32 @@ public class student extends javax.swing.JPanel {
                 .addGroup(completedcardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(completedcardPanelLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(completedapts))
+                        .addComponent(completedTitleLabel))
                     .addGroup(completedcardPanelLayout.createSequentialGroup()
                         .addGap(14, 14, 14)
-                        .addComponent(completedcount, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(62, Short.MAX_VALUE))
+                        .addComponent(completedValueDesign, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(completedcardPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(completedCaptionLabel)))
+                .addContainerGap(126, Short.MAX_VALUE))
         );
         completedcardPanelLayout.setVerticalGroup(
             completedcardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(completedcardPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(completedapts)
+                .addComponent(completedTitleLabel)
                 .addGap(18, 18, 18)
-                .addComponent(completedcount)
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addComponent(completedValueDesign)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(completedCaptionLabel)
+                .addContainerGap(11, Short.MAX_VALUE))
         );
 
-        appointmentsHeading.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        appointmentsHeading.setText("UPCOMING APPOINTMENTS");
+        sectionTitle.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        sectionTitle.setForeground(java.awt.Color.white);
+        sectionTitle.setText("Upcoming Appointments");
 
-        aptstable.setModel(new javax.swing.table.DefaultTableModel(
+        dashboardTableDesign.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -3706,91 +3759,167 @@ public class student extends javax.swing.JPanel {
                 "Appointment IIDD", "Counsellor", "Date", "Time", "Status"
             }
         ));
-        jScrollPane1.setViewportView(aptstable);
+        tableCard.setViewportView(dashboardTableDesign);
 
-        quickactions.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        quickactions.setText("QUICK ACTIONS");
+        bookButton.setBackground(new java.awt.Color(0, 102, 153));
+        bookButton.setForeground(new java.awt.Color(255, 255, 255));
+        bookButton.setText("Book an Appointment");
 
-        quickbook.setBackground(new java.awt.Color(0, 102, 153));
-        quickbook.setForeground(new java.awt.Color(255, 255, 255));
-        quickbook.setText("Book an Appointment");
+        cancelButton.setBackground(new java.awt.Color(102, 102, 102));
+        cancelButton.setText("Cancel Appointment");
 
-        quickcancel.setBackground(new java.awt.Color(102, 102, 102));
-        quickcancel.setText("Cancel / Reschedule");
-        quickcancel.addActionListener(this::quickcancelActionPerformed);
+        rescheduleButton.setText("Reschedule");
 
-        jButton2.setText("View Appointments");
+        date.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        date.setForeground(java.awt.Color.lightGray);
+        date.setText("Wednesday, 25 November 2026");
 
-        jButton3.setText("Give Feedback");
+        minimise.setText("-");
 
-        javax.swing.GroupLayout studentcontentpanelLayout = new javax.swing.GroupLayout(studentcontentpanel);
-        studentcontentpanel.setLayout(studentcontentpanelLayout);
-        studentcontentpanelLayout.setHorizontalGroup(
-            studentcontentpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(studentcontentpanelLayout.createSequentialGroup()
+        exitWindow.setText("x");
+
+        viewAll.setText("View all");
+
+        calendarCard.setBackground(java.awt.Color.gray);
+        calendarCard.setPreferredSize(new java.awt.Dimension(278, 100));
+
+        legend.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        legend.setText("Dates with your appointments");
+
+        dashboardCalendarDesign.setBackground(java.awt.Color.lightGray);
+
+        calendarMonthLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        calendarMonthLabel.setText("November 2026");
+
+        javax.swing.GroupLayout dashboardCalendarDesignLayout = new javax.swing.GroupLayout(dashboardCalendarDesign);
+        dashboardCalendarDesign.setLayout(dashboardCalendarDesignLayout);
+        dashboardCalendarDesignLayout.setHorizontalGroup(
+            dashboardCalendarDesignLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dashboardCalendarDesignLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(studentcontentpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(dashboardheading)
-                    .addGroup(studentcontentpanelLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addGroup(studentcontentpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(studentcontentpanelLayout.createSequentialGroup()
-                                .addComponent(upcomingcardPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(pendingcardPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(completedcardPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(WelcomeMessage)
-                            .addGroup(studentcontentpanelLayout.createSequentialGroup()
-                                .addComponent(quickbook)
-                                .addGap(36, 36, 36)
-                                .addComponent(quickcancel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton3))
-                            .addGroup(studentcontentpanelLayout.createSequentialGroup()
-                                .addGap(95, 95, 95)
-                                .addComponent(quickactions))
-                            .addGroup(studentcontentpanelLayout.createSequentialGroup()
-                                .addGap(21, 21, 21)
-                                .addComponent(appointmentsHeading))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addComponent(calendarMonthLabel)
+                .addContainerGap(284, Short.MAX_VALUE))
+        );
+        dashboardCalendarDesignLayout.setVerticalGroup(
+            dashboardCalendarDesignLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dashboardCalendarDesignLayout.createSequentialGroup()
+                .addComponent(calendarMonthLabel)
+                .addGap(0, 176, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout calendarCardLayout = new javax.swing.GroupLayout(calendarCard);
+        calendarCard.setLayout(calendarCardLayout);
+        calendarCardLayout.setHorizontalGroup(
+            calendarCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(calendarCardLayout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(calendarCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(legend)
+                    .addComponent(dashboardCalendarDesign, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        studentcontentpanelLayout.setVerticalGroup(
-            studentcontentpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(studentcontentpanelLayout.createSequentialGroup()
+        calendarCardLayout.setVerticalGroup(
+            calendarCardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(calendarCardLayout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(dashboardCalendarDesign, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(legend)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        eyebrow.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        eyebrow.setForeground(java.awt.Color.cyan);
+        eyebrow.setText("STUDENT PORTAL");
+
+        javax.swing.GroupLayout backdropDesignLayout = new javax.swing.GroupLayout(backdropDesign);
+        backdropDesign.setLayout(backdropDesignLayout);
+        backdropDesignLayout.setHorizontalGroup(
+            backdropDesignLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(backdropDesignLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(dashboardheading)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(WelcomeMessage)
+                .addComponent(subtitleLabelDesign)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, backdropDesignLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(backdropDesignLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(greetingLabelDesign)
+                    .addComponent(eyebrow))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(date)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(studentcontentpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(minimise)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(exitWindow)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, backdropDesignLayout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addGroup(backdropDesignLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, backdropDesignLayout.createSequentialGroup()
+                        .addComponent(sectionTitle)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(viewAll)
+                        .addGap(75, 75, 75))
+                    .addGroup(backdropDesignLayout.createSequentialGroup()
+                        .addGroup(backdropDesignLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(backdropDesignLayout.createSequentialGroup()
+                                .addComponent(tableCard, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(calendarCard, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(backdropDesignLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(backdropDesignLayout.createSequentialGroup()
+                                    .addComponent(bookButton)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(cancelButton)
+                                    .addGap(24, 24, 24)
+                                    .addComponent(rescheduleButton))
+                                .addGroup(backdropDesignLayout.createSequentialGroup()
+                                    .addComponent(upcomingcardPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(pendingcardPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(completedcardPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addContainerGap(11, Short.MAX_VALUE))))
+        );
+        backdropDesignLayout.setVerticalGroup(
+            backdropDesignLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(backdropDesignLayout.createSequentialGroup()
+                .addGroup(backdropDesignLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(backdropDesignLayout.createSequentialGroup()
+                        .addGroup(backdropDesignLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(minimise)
+                            .addComponent(exitWindow)
+                            .addComponent(date))
+                        .addGap(72, 72, 72))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, backdropDesignLayout.createSequentialGroup()
+                        .addComponent(eyebrow)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(greetingLabelDesign)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(subtitleLabelDesign)
+                        .addGap(18, 18, 18)))
+                .addGroup(backdropDesignLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(upcomingcardPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pendingcardPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(completedcardPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(12, 12, 12)
-                .addComponent(appointmentsHeading)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(quickactions)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(studentcontentpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(quickbook)
-                    .addComponent(quickcancel)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
-                .addContainerGap(8, Short.MAX_VALUE))
+                .addGroup(backdropDesignLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(sectionTitle)
+                    .addComponent(viewAll))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(backdropDesignLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(tableCard, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+                    .addComponent(calendarCard, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE))
+                .addGap(59, 59, 59)
+                .addGroup(backdropDesignLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bookButton)
+                    .addComponent(cancelButton)
+                    .addComponent(rescheduleButton))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
 
-        add(studentcontentpanel, java.awt.BorderLayout.CENTER);
+        add(backdropDesign, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void quickcancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quickcancelActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_quickcancelActionPerformed
 
     private void myappointmentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myappointmentsActionPerformed
         // TODO add your handling code here:
@@ -3802,33 +3931,46 @@ public class student extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel WelcomeMessage;
-    private javax.swing.JLabel appointmentsHeading;
-    private javax.swing.JTable aptstable;
+    private javax.swing.JButton backButton;
+    private javax.swing.JPanel backdropDesign;
+    private javax.swing.JButton bookButton;
     private javax.swing.JButton bookappointment;
-    private javax.swing.JLabel completedapts;
+    private javax.swing.JLabel brand;
+    private javax.swing.JPanel calendarCard;
+    private javax.swing.JLabel calendarMonthLabel;
+    private javax.swing.JButton cancelButton;
+    private javax.swing.JLabel completedCaptionLabel;
+    private javax.swing.JLabel completedTitleLabel;
+    private javax.swing.JLabel completedValueDesign;
     private javax.swing.JPanel completedcardPanel;
-    private javax.swing.JLabel completedcount;
-    private javax.swing.JLabel dashboardheading;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton logout;
+    private javax.swing.JPanel dashboardCalendarDesign;
+    private javax.swing.JTable dashboardTableDesign;
+    private javax.swing.JLabel date;
+    private javax.swing.JButton deleteButton;
+    private javax.swing.JButton exitButton;
+    private javax.swing.JButton exitWindow;
+    private javax.swing.JLabel eyebrow;
+    private javax.swing.JLabel greetingLabelDesign;
+    private javax.swing.JLabel legend;
+    private javax.swing.JButton logoutButton;
+    private javax.swing.JButton menu;
+    private javax.swing.JButton minimise;
     private javax.swing.JButton myappointments;
-    private javax.swing.JLabel pendingapts;
+    private javax.swing.JPanel navSidebarDesign;
+    private javax.swing.JLabel pendingCaptionLabel;
+    private javax.swing.JLabel pendingTitleLabel;
+    private javax.swing.JLabel pendingValueDesign;
     private javax.swing.JPanel pendingcardPanel;
-    private javax.swing.JLabel pendingcount;
-    private javax.swing.JLabel quickactions;
-    private javax.swing.JButton quickbook;
-    private javax.swing.JButton quickcancel;
-    private javax.swing.JPanel sidebarpanel;
-    private javax.swing.JPanel studentcontentpanel;
+    private javax.swing.JButton rescheduleButton;
+    private javax.swing.JLabel sectionTitle;
     private javax.swing.JButton studentdashboard;
     private javax.swing.JButton studentprofile;
-    private javax.swing.JLabel titlelabel;
+    private javax.swing.JLabel subtitleLabelDesign;
+    private javax.swing.JScrollPane tableCard;
+    private javax.swing.JLabel upcomingCaptionLabel;
+    private javax.swing.JLabel upcomingTitleLabel;
+    private javax.swing.JLabel upcomingValueDesign;
     private javax.swing.JPanel upcomingcardPanel;
-    private javax.swing.JLabel upcomingcount;
-    private javax.swing.JLabel upcommingapts;
+    private javax.swing.JButton viewAll;
     // End of variables declaration//GEN-END:variables
 }
