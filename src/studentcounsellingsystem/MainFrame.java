@@ -1,5 +1,6 @@
 package studentcounsellingsystem;
 
+import forms.CounselorDashboards;
 import forms.WelcomePanel;
 import forms.LoginPanel;
 import forms.RegistrationPanel;
@@ -46,7 +47,7 @@ public class MainFrame extends javax.swing.JFrame {
         addScreen("LOGIN", new LoginPanel());
         addScreen("REGISTER", new RegistrationPanel());
         addScreen("STUDENT_DASHBOARD", new student());
-        // addScreen("COUNSELLOR_DASHBOARD", new CounsellorDashboardPanel());
+        addScreen("COUNSELLOR_DASHBOARD", new CounselorDashboards());
 
         pack();                          // size comes from the panels (1100 x 700)
         setLocationRelativeTo(null);
